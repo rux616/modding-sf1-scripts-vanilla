@@ -1,0 +1,1 @@
+Scriptname UC02_PowerboxObjScript extends ReferenceAlias

@@ -1,0 +1,13 @@
+{
+	"folders":
+	[
+		{
+			"path": ".",
+			"file_include_patterns": ["*.psc"]
+		}
+	],
+	"syntax_override":
+	{
+		"\\.psc$": ["PapyrusF4", "PapyrusF4"]
+    }
+}

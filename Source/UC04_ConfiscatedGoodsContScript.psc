@@ -1,0 +1,1 @@
+Scriptname UC04_ConfiscatedGoodsContScript extends ReferenceAlias

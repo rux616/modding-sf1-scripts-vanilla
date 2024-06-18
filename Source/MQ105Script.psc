@@ -1,0 +1,3 @@
+Scriptname MQ105Script extends Quest
+
+InputEnableLayer Property MQ105EnableLayer Auto Hidden

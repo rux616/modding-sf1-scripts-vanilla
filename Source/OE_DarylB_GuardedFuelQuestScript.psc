@@ -1,0 +1,3 @@
+Scriptname OE_DarylB_GuardedFuelQuestScript extends Quest
+
+Int Property MyTalkCount Auto
