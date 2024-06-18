@@ -1,0 +1,2 @@
+Scriptname REAliasScriptPilot
+{ OBSOLETE }

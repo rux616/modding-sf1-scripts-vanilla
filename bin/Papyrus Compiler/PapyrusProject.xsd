@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="PapyrusProject"
+    targetNamespace="PapyrusProject.xsd"
+    elementFormDefault="qualified"
+    xmlns="PapyrusProject.xsd"
+    xmlns:mstns="PapyrusProject.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:element name="PapyrusProject">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Imports" type="importList"/>
+        <xs:element minOccurs="0" name="Folders" type="folderList"/>
+        <xs:element minOccurs="0" name="Scripts" type="scriptList"/>
+      </xs:sequence>
+      <xs:attribute name="Output" type="xs:string"/>
+      <xs:attribute name="Flags" type="xs:string"/>
+      <xs:attribute name="Asm" type="asmType"/>
+      <xs:attribute name="Optimize" type="xs:boolean"/>
+      <xs:attribute name="Release" type="xs:boolean"/>
+      <xs:attribute name="Final" type="xs:boolean"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="importList">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="Import" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="folderList">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="Folder" type="folderType"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="scriptList">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="Script" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="folderType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="NoRecurse" type="xs:boolean"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:simpleType name="asmType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None"/>
+      <xs:enumeration value="Keep"/>
+      <xs:enumeration value="Only"/>
+      <xs:enumeration value="Discard"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

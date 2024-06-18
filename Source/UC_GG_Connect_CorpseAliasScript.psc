@@ -1,0 +1,1 @@
+Scriptname UC_GG_Connect_CorpseAliasScript extends ReferenceAlias

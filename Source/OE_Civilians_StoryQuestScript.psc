@@ -1,0 +1,1 @@
+Scriptname OE_Civilians_StoryQuestScript extends Quest

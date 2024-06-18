@@ -1,0 +1,3 @@
+Scriptname TestSteveCEavesdroppingSceneScript extends Quest
+
+Scene Property EavesdroppingTemplateSceneB02 Auto Const Mandatory

@@ -1,0 +1,3 @@
+Scriptname DialogueCFTheKeyQuestScript extends Quest
+
+DialogueShipServicesScript property DialogueShipServices auto const mandatory

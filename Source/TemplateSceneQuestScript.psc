@@ -1,0 +1,3 @@
+Scriptname TemplateSceneQuestScript extends Quest Conditional
+
+Int Property TestVMQuestVariable Auto Conditional

@@ -1,0 +1,1 @@
+Scriptname DefaultStartSceneOnEnterTrigger extends ObjectReference Conditional Const

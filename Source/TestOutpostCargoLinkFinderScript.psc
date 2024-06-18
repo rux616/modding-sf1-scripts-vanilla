@@ -1,0 +1,3 @@
+Scriptname TestOutpostCargoLinkFinderScript extends Quest
+
+RefCollectionAlias property CargoLinks auto const mandatory
