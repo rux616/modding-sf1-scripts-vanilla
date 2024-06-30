@@ -1160,6 +1160,7 @@ Starfield v1.12.32.0
                 - [Property: Motion\_Dynamic](#property-motion_dynamic)
                 - [Property: Motion\_Keyframed](#property-motion_keyframed)
                 - [Event: OnActivate](#event-onactivate-3)
+                - [Event: OnBuilderMenuSelect](#event-onbuildermenuselect-3)
                 - [Event: OnCellAttach](#event-oncellattach-3)
                 - [Event: OnCellDetach](#event-oncelldetach-3)
                 - [Event: OnCellLoad](#event-oncellload-3)
@@ -1177,6 +1178,7 @@ Starfield v1.12.32.0
                 - [Event: OnItemRemoved](#event-onitemremoved-3)
                 - [Event: OnLoad](#event-onload-3)
                 - [Event: OnLockStateChanged](#event-onlockstatechanged-3)
+                - [Event: OnMapMarkerDiscovered](#event-onmapmarkerdiscovered-3)
                 - [Event: OnObjectRepaired](#event-onobjectrepaired-3)
                 - [Event: OnObjectDestroyed](#event-onobjectdestroyed-3)
                 - [Event: OnOpen](#event-onopen-3)
@@ -1186,11 +1188,14 @@ Starfield v1.12.32.0
                 - [Event: OnPlayerDialogueTarget](#event-onplayerdialoguetarget-3)
                 - [Event: OnPowerOn](#event-onpoweron-3)
                 - [Event: OnPowerOff](#event-onpoweroff-3)
+                - [Event: OnQuickContainerOpened](#event-onquickcontaineropened-3)
                 - [Event: OnRead](#event-onread-3)
                 - [Event: OnRelease](#event-onrelease-3)
                 - [Event: OnReset](#event-onreset-3)
+                - [Event: OnScanned](#event-onscanned-3)
                 - [Event: OnSell](#event-onsell-3)
                 - [Event: OnSpellCast](#event-onspellcast-3)
+                - [Event: OnTerminalMenuItemRun](#event-onterminalmenuitemrun-3)
                 - [Event: OnTranslationAlmostComplete](#event-ontranslationalmostcomplete-3)
                 - [Event: OnTranslationComplete](#event-ontranslationcomplete-3)
                 - [Event: OnTranslationFailed](#event-ontranslationfailed-3)
@@ -1200,6 +1205,7 @@ Starfield v1.12.32.0
                 - [Event: OnTriggerLeave](#event-ontriggerleave-3)
                 - [Event: OnUnequipped](#event-onunequipped-3)
                 - [Event: OnUnload](#event-onunload-3)
+                - [Event: OnWorkshopCargoLinkChanged](#event-onworkshopcargolinkchanged-3)
                 - [Event: OnWorkshopFlyCam](#event-onworkshopflycam-3)
                 - [Event: OnWorkshopMode](#event-onworkshopmode-3)
                 - [Event: OnWorkshopObjectGrabbed](#event-onworkshopobjectgrabbed-3)
@@ -1208,12 +1214,6 @@ Starfield v1.12.32.0
                 - [Event: OnWorkshopObjectRemoved](#event-onworkshopobjectremoved-3)
                 - [Event: OnWorkshopOutputLink](#event-onworkshopoutputlink-3)
                 - [Event: OnWorkshopNPCTransfer](#event-onworkshopnpctransfer-3)
-                - [Event: OnTerminalMenuItemRun](#event-onterminalmenuitemrun-3)
-                - [Event: OnQuickContainerOpened](#event-onquickcontaineropened-3)
-                - [Event: OnBuilderMenuSelect](#event-onbuildermenuselect-3)
-                - [Event: OnScanned](#event-onscanned-3)
-                - [Event: OnMapMarkerDiscovered](#event-onmapmarkerdiscovered-3)
-                - [Event: OnWorkshopCargoLinkChanged](#event-onworkshopcargolinkchanged-3)
                 - [Function: GetCurrentShipRef](#function-getcurrentshipref)
                 - [Function: Unlock](#function-unlock)
                 - [Function: rampRumble](#function-ramprumble)
@@ -1536,6 +1536,76 @@ Starfield v1.12.32.0
                 - [Function: PlaceShipNearMe](#function-placeshipnearme)
                 - [Function: MoveNear](#function-movenear)
                 - [Script: Actor](#script-actor)
+                    - [Event: OnActorActivatedRef](#event-onactoractivatedref-3)
+                    - [Event: OnAffinityEvent](#event-onaffinityevent-3)
+                    - [Event: OnCombatStateChanged](#event-oncombatstatechanged-3)
+                    - [Event: OnCombatListAdded](#event-oncombatlistadded-3)
+                    - [Event: OnCombatListRemoved](#event-oncombatlistremoved-3)
+                    - [Event: OnCommandModeCompleteCommand](#event-oncommandmodecompletecommand-3)
+                    - [Event: OnCommandModeEnter](#event-oncommandmodeenter-3)
+                    - [Event: OnCommandModeExit](#event-oncommandmodeexit-3)
+                    - [Event: OnCommandModeGiveCommand](#event-oncommandmodegivecommand-3)
+                    - [Event: OnCompanionDismiss](#event-oncompaniondismiss-3)
+                    - [Event: OnConsciousnessStateChanged](#event-onconsciousnessstatechanged-3)
+                    - [Event: OnCripple](#event-oncripple-3)
+                    - [Event: OnDeferredKill](#event-ondeferredkill-3)
+                    - [Event: OnDeath](#event-ondeath-3)
+                    - [Event: OnDifficultyChanged](#event-ondifficultychanged-3)
+                    - [Event: OnDying](#event-ondying-3)
+                    - [Event: OnEnterBleedout](#event-onenterbleedout-3)
+                    - [Event: OnEnterOutpostBeaconMode](#event-onenteroutpostbeaconmode-3)
+                    - [Event: OnEnterShipInterior](#event-onentershipinterior-3)
+                    - [Event: OnEnterSneaking](#event-onentersneaking-3)
+                    - [Event: OnEscortWaitStart](#event-onescortwaitstart-3)
+                    - [Event: OnEscortWaitStop](#event-onescortwaitstop-3)
+                    - [Event: OnExitShipInterior](#event-onexitshipinterior-3)
+                    - [Event: OnGetUp](#event-ongetup-3)
+                    - [Event: OnHomeShipSet](#event-onhomeshipset-3)
+                    - [Event: OnItemEquipped](#event-onitemequipped-3)
+                    - [Event: OnItemUnequipped](#event-onitemunequipped-3)
+                    - [Event: OnKill](#event-onkill-3)
+                    - [Event: OnLocationChange](#event-onlocationchange-3)
+                    - [Event: OnOutpostPlaced](#event-onoutpostplaced-3)
+                    - [Event: OnPackageChange](#event-onpackagechange-3)
+                    - [Event: OnPackageEnd](#event-onpackageend-3)
+                    - [Event: OnPackageStart](#event-onpackagestart-3)
+                    - [Event: OnPartialCripple](#event-onpartialcripple-3)
+                    - [Event: OnPickLock](#event-onpicklock-3)
+                    - [Event: OnPickpocketFailed](#event-onpickpocketfailed-3)
+                    - [Event: OnPlayerArrested](#event-onplayerarrested-3)
+                    - [Event: OnPlayerAssaultActor](#event-onplayerassaultactor-3)
+                    - [Event: OnPlayerBuyShip](#event-onplayerbuyship-3)
+                    - [Event: OnPlayerCraftItem](#event-onplayercraftitem-3)
+                    - [Event: OnPlayerCreateRobot](#event-onplayercreaterobot-3)
+                    - [Event: OnPlayerCompleteResearch](#event-onplayercompleteresearch-3)
+                    - [Event: OnPlayerCrimeGold](#event-onplayercrimegold-3)
+                    - [Event: OnPlayerEnterVertibird](#event-onplayerentervertibird-3)
+                    - [Event: OnPlayerFailedPlotRoute](#event-onplayerfailedplotroute-3)
+                    - [Event: OnPlayerFallLongDistance](#event-onplayerfalllongdistance-3)
+                    - [Event: OnPlayerFireWeapon](#event-onplayerfireweapon-3)
+                    - [Event: OnPlayerFollowerWarp](#event-onplayerfollowerwarp-3)
+                    - [Event: OnPlayerHealTeammate](#event-onplayerhealteammate-3)
+                    - [Event: OnPlayerItemAdded](#event-onplayeritemadded-3)
+                    - [Event: OnPlayerJail](#event-onplayerjail-3)
+                    - [Event: OnPlayerLoadGame](#event-onplayerloadgame-3)
+                    - [Event: OnPlayerLoiteringBegin](#event-onplayerloiteringbegin-3)
+                    - [Event: OnPlayerLoiteringEnd](#event-onplayerloiteringend-3)
+                    - [Event: OnPlayerModArmorWeapon](#event-onplayermodarmorweapon-3)
+                    - [Event: OnPlayerModifiedShip](#event-onplayermodifiedship-3)
+                    - [Event: OnPlayerModRobot](#event-onplayermodrobot-3)
+                    - [Event: OnPlayerMurderActor](#event-onplayermurderactor-3)
+                    - [Event: OnPlayerPayFine](#event-onplayerpayfine-3)
+                    - [Event: OnPlayerPlanetSurveyComplete](#event-onplayerplanetsurveycomplete-3)
+                    - [Event: OnPlayerScannedObject](#event-onplayerscannedobject-3)
+                    - [Event: OnPlayerSellShip](#event-onplayersellship-3)
+                    - [Event: OnPlayerSwimming](#event-onplayerswimming-3)
+                    - [Event: OnPlayerTrespass](#event-onplayertrespass-3)
+                    - [Event: OnPlayerUseWorkBench](#event-onplayeruseworkbench-3)
+                    - [Event: OnRaceSwitchComplete](#event-onraceswitchcomplete-3)
+                    - [Event: OnRecoverFromBleedout](#event-onrecoverfrombleedout-3)
+                    - [Event: OnSit](#event-onsit-3)
+                    - [Event: OnSpeechChallengeAvailable](#event-onspeechchallengeavailable-3)
+                    - [Event: OnUnconscious](#event-onunconscious-1)
                     - [Property: PathingResult\_Success](#property-pathingresult_success)
                     - [Property: PathingResult\_Failure](#property-pathingresult_failure)
                     - [Property: PathingResult\_Stopped](#property-pathingresult_stopped)
@@ -1747,76 +1817,6 @@ Starfield v1.12.32.0
                     - [Function: DrawWeapon (Native)](#function-drawweapon-native)
                     - [Function: DogPlaceInMouth (Native)](#function-dogplaceinmouth-native)
                     - [Function: DogDropItems (Native)](#function-dogdropitems-native)
-                    - [Event: OnActorActivatedRef](#event-onactoractivatedref-3)
-                    - [Event: OnAffinityEvent](#event-onaffinityevent-3)
-                    - [Event: OnCombatStateChanged](#event-oncombatstatechanged-3)
-                    - [Event: OnCombatListAdded](#event-oncombatlistadded-3)
-                    - [Event: OnCombatListRemoved](#event-oncombatlistremoved-3)
-                    - [Event: OnCommandModeCompleteCommand](#event-oncommandmodecompletecommand-3)
-                    - [Event: OnCommandModeEnter](#event-oncommandmodeenter-3)
-                    - [Event: OnCommandModeExit](#event-oncommandmodeexit-3)
-                    - [Event: OnCommandModeGiveCommand](#event-oncommandmodegivecommand-3)
-                    - [Event: OnCompanionDismiss](#event-oncompaniondismiss-3)
-                    - [Event: OnConsciousnessStateChanged](#event-onconsciousnessstatechanged-3)
-                    - [Event: OnCripple](#event-oncripple-3)
-                    - [Event: OnDeferredKill](#event-ondeferredkill-3)
-                    - [Event: OnDeath](#event-ondeath-3)
-                    - [Event: OnDifficultyChanged](#event-ondifficultychanged-3)
-                    - [Event: OnDying](#event-ondying-3)
-                    - [Event: OnUnconscious](#event-onunconscious-1)
-                    - [Event: OnEnterBleedout](#event-onenterbleedout-3)
-                    - [Event: OnEnterOutpostBeaconMode](#event-onenteroutpostbeaconmode-3)
-                    - [Event: OnEnterShipInterior](#event-onentershipinterior-3)
-                    - [Event: OnEnterSneaking](#event-onentersneaking-3)
-                    - [Event: OnEscortWaitStart](#event-onescortwaitstart-3)
-                    - [Event: OnEscortWaitStop](#event-onescortwaitstop-3)
-                    - [Event: OnExitShipInterior](#event-onexitshipinterior-3)
-                    - [Event: OnPlayerFollowerWarp](#event-onplayerfollowerwarp-3)
-                    - [Event: OnGetUp](#event-ongetup-3)
-                    - [Event: OnHomeShipSet](#event-onhomeshipset-3)
-                    - [Event: OnPlayerFailedPlotRoute](#event-onplayerfailedplotroute-3)
-                    - [Event: OnPlayerModifiedShip](#event-onplayermodifiedship-3)
-                    - [Event: OnItemEquipped](#event-onitemequipped-3)
-                    - [Event: OnItemUnequipped](#event-onitemunequipped-3)
-                    - [Event: OnKill](#event-onkill-3)
-                    - [Event: OnLocationChange](#event-onlocationchange-3)
-                    - [Event: OnRecoverFromBleedout](#event-onrecoverfrombleedout-3)
-                    - [Event: OnPackageChange](#event-onpackagechange-3)
-                    - [Event: OnPackageEnd](#event-onpackageend-3)
-                    - [Event: OnPackageStart](#event-onpackagestart-3)
-                    - [Event: OnPartialCripple](#event-onpartialcripple-3)
-                    - [Event: OnPickLock](#event-onpicklock-3)
-                    - [Event: OnPickpocketFailed](#event-onpickpocketfailed-3)
-                    - [Event: OnPlayerItemAdded](#event-onplayeritemadded-3)
-                    - [Event: OnPlayerCompleteResearch](#event-onplayercompleteresearch-3)
-                    - [Event: OnPlayerCraftItem](#event-onplayercraftitem-3)
-                    - [Event: OnPlayerCreateRobot](#event-onplayercreaterobot-3)
-                    - [Event: OnPlayerEnterVertibird](#event-onplayerentervertibird-3)
-                    - [Event: OnPlayerFallLongDistance](#event-onplayerfalllongdistance-3)
-                    - [Event: OnPlayerFireWeapon](#event-onplayerfireweapon-3)
-                    - [Event: OnPlayerHealTeammate](#event-onplayerhealteammate-3)
-                    - [Event: OnPlayerLoadGame](#event-onplayerloadgame-3)
-                    - [Event: OnPlayerLoiteringBegin](#event-onplayerloiteringbegin-3)
-                    - [Event: OnPlayerLoiteringEnd](#event-onplayerloiteringend-3)
-                    - [Event: OnPlayerModArmorWeapon](#event-onplayermodarmorweapon-3)
-                    - [Event: OnPlayerModRobot](#event-onplayermodrobot-3)
-                    - [Event: OnPlayerSwimming](#event-onplayerswimming-3)
-                    - [Event: OnPlayerUseWorkBench](#event-onplayeruseworkbench-3)
-                    - [Event: OnRaceSwitchComplete](#event-onraceswitchcomplete-3)
-                    - [Event: OnSit](#event-onsit-3)
-                    - [Event: OnSpeechChallengeAvailable](#event-onspeechchallengeavailable-3)
-                    - [Event: OnPlayerPlanetSurveyComplete](#event-onplayerplanetsurveycomplete-3)
-                    - [Event: OnPlayerScannedObject](#event-onplayerscannedobject-3)
-                    - [Event: OnOutpostPlaced](#event-onoutpostplaced-3)
-                    - [Event: OnPlayerArrested](#event-onplayerarrested-3)
-                    - [Event: OnPlayerAssaultActor](#event-onplayerassaultactor-3)
-                    - [Event: OnPlayerCrimeGold](#event-onplayercrimegold-3)
-                    - [Event: OnPlayerJail](#event-onplayerjail-3)
-                    - [Event: OnPlayerPayFine](#event-onplayerpayfine-3)
-                    - [Event: OnPlayerMurderActor](#event-onplayermurderactor-3)
-                    - [Event: OnPlayerTrespass](#event-onplayertrespass-3)
-                    - [Event: OnPlayerBuyShip](#event-onplayerbuyship-3)
-                    - [Event: OnPlayerSellShip](#event-onplayersellship-3)
                     - [Function: ForceMovementDirection (Native)](#function-forcemovementdirection-native)
                     - [Function: ForceMovementSpeed (Native)](#function-forcemovementspeed-native)
                     - [Function: ForceMovementRotationSpeed (Native)](#function-forcemovementrotationspeed-native)
@@ -12401,6 +12401,13 @@ Event received when this reference is activated
 
 ([TOC](#table-of-contents))
 
+##### Event: OnBuilderMenuSelect
+`Event OnBuilderMenuSelect(ActorValue akActorValue)`
+
+Event received when the produced resource on an Workshop producer/builder has changed.
+
+([TOC](#table-of-contents))
+
 ##### Event: OnCellAttach
 `Event OnCellAttach()`
 
@@ -12520,6 +12527,13 @@ Event received when the lock on this object changes
 
 ([TOC](#table-of-contents))
 
+##### Event: OnMapMarkerDiscovered
+`Event OnMapMarkerDiscovered()`
+
+Received when this map marker is discovered
+
+([TOC](#table-of-contents))
+
 ##### Event: OnObjectRepaired
 `Event OnObjectRepaired(ObjectReference akReference)`
 
@@ -12583,6 +12597,13 @@ Event received when a workshop loses all power
 
 ([TOC](#table-of-contents))
 
+##### Event: OnQuickContainerOpened
+`Event OnQuickContainerOpened()`
+
+Received if the quick container opens
+
+([TOC](#table-of-contents))
+
 ##### Event: OnRead
 `Event OnRead()`
 
@@ -12604,6 +12625,13 @@ Event received when this reference is reset
 
 ([TOC](#table-of-contents))
 
+##### Event: OnScanned
+`Event OnScanned()`
+
+Received when this object is scanned
+
+([TOC](#table-of-contents))
+
 ##### Event: OnSell
 `Event OnSell(Actor akSeller)`
 
@@ -12615,6 +12643,13 @@ Event received when this reference is sold by an actor
 `Event OnSpellCast(Form akSpell)`
 
 Event received when a spell is cast by this object
+
+([TOC](#table-of-contents))
+
+##### Event: OnTerminalMenuItemRun
+`Event OnTerminalMenuItemRun(int auiMenuItemID, TerminalMenu akTerminalBase, ObjectReference akTerminalRef)`
+
+Received if terminal object has menu item clicked
 
 ([TOC](#table-of-contents))
 
@@ -12681,6 +12716,13 @@ Event received when this object is being unloaded - will be fired every time thi
 
 ([TOC](#table-of-contents))
 
+##### Event: OnWorkshopCargoLinkChanged
+`Event OnWorkshopCargoLinkChanged(ObjectReference akOldTarget, ObjectReference akNewTarget)`
+
+Event that is triggered when the target for a cargo link on workshop item changes.
+
+([TOC](#table-of-contents))
+
 ##### Event: OnWorkshopFlyCam
 `Event OnWorkshopFlyCam(bool aStart)`
 
@@ -12734,48 +12776,6 @@ Event received when a new Output Link is created at a Workshop.
 `Event OnWorkshopNPCTransfer(Location akNewWorkshop, Keyword akActionKW)`
 
 Event that occurs when a workshop NPC is directed to move to another settlement
-
-([TOC](#table-of-contents))
-
-##### Event: OnTerminalMenuItemRun
-`Event OnTerminalMenuItemRun(int auiMenuItemID, TerminalMenu akTerminalBase, ObjectReference akTerminalRef)`
-
-Received if terminal object has menu item clicked
-
-([TOC](#table-of-contents))
-
-##### Event: OnQuickContainerOpened
-`Event OnQuickContainerOpened()`
-
-Received if the quick container opens
-
-([TOC](#table-of-contents))
-
-##### Event: OnBuilderMenuSelect
-`Event OnBuilderMenuSelect(ActorValue akActorValue)`
-
-Event received when the produced resource on an Workshop producer/builder has changed.
-
-([TOC](#table-of-contents))
-
-##### Event: OnScanned
-`Event OnScanned()`
-
-Received when this object is scanned
-
-([TOC](#table-of-contents))
-
-##### Event: OnMapMarkerDiscovered
-`Event OnMapMarkerDiscovered()`
-
-Received when this map marker is discovered
-
-([TOC](#table-of-contents))
-
-##### Event: OnWorkshopCargoLinkChanged
-`Event OnWorkshopCargoLinkChanged(ObjectReference akOldTarget, ObjectReference akNewTarget)`
-
-Event that is triggered when the target for a cargo link on workshop item changes.
 
 ([TOC](#table-of-contents))
 
@@ -15234,6 +15234,556 @@ Relationship functions use the following values:
 
 ([TOC](#table-of-contents))
 
+###### Event: OnActorActivatedRef
+`Event OnActorActivatedRef(ObjectReference akActivatedRef)`
+
+Event received when this actor activates a ref
+
+([TOC](#table-of-contents))
+
+###### Event: OnAffinityEvent
+`Event OnAffinityEvent(AffinityEvent akAffinityEvent, ActorValue akActorValue, GlobalVariable akReactionValue, ObjectReference akTarget)`
+
+Event received when affinity event is run
+
+([TOC](#table-of-contents))
+
+###### Event: OnCombatStateChanged
+`Event OnCombatStateChanged(ObjectReference akTarget, int aeCombatState)`
+
+Event that is triggered when this actor's combat state against the target changes
+
+State is as follows:
+- 0 - not in combat
+- 1 - in combat
+- 2 - searching
+
+([TOC](#table-of-contents))
+
+###### Event: OnCombatListAdded
+`Event OnCombatListAdded(Actor akTarget)`
+
+Event that is triggered when this actor adds another actor to its combat list.
+
+([TOC](#table-of-contents))
+
+###### Event: OnCombatListRemoved
+`Event OnCombatListRemoved(Actor akTarget)`
+
+Event that is triggered when this actor removes another actor from its combat list.
+
+([TOC](#table-of-contents))
+
+###### Event: OnCommandModeCompleteCommand
+`Event OnCommandModeCompleteCommand(int aeCommandType, ObjectReference akTarget)`
+
+Event received when the actor completes a command in command mode.
+
+Type is as follows:
+- 0 - None
+- 1 - Call
+- 2 - Follow
+- 3 - Move
+- 4 - Attack
+- 5 - Inspect
+- 6 - Retrieve
+- 7 - Stay
+- 8 - Release
+- 9 - Heal
+- 10 - Assign
+- 11 - Ride
+- 12 - Enter
+
+([TOC](#table-of-contents))
+
+###### Event: OnCommandModeEnter
+`Event OnCommandModeEnter()`
+
+Event received when the player begins commanding this actor.
+
+([TOC](#table-of-contents))
+
+###### Event: OnCommandModeExit
+`Event OnCommandModeExit()`
+
+Event received when the player ends commanding this actor.
+
+([TOC](#table-of-contents))
+
+###### Event: OnCommandModeGiveCommand
+`Event OnCommandModeGiveCommand(int aeCommandType, ObjectReference akTarget)`
+
+Event received when the player gives actor a command in command mode.
+
+Type is as follows:
+- 0 - None
+- 1 - Call
+- 2 - Follow
+- 3 - Move
+- 4 - Attack
+- 5 - Inspect
+- 6 - Retrieve
+- 7 - Stay
+- 8 - Release
+- 9 - Heal
+- 10 - Assign
+- 11 - Ride
+- 12 - Enter
+
+([TOC](#table-of-contents))
+
+###### Event: OnCompanionDismiss
+`Event OnCompanionDismiss()`
+
+Received when player dismisses teammate companion
+
+([TOC](#table-of-contents))
+
+###### Event: OnConsciousnessStateChanged
+`Event OnConsciousnessStateChanged( bool abUnconscious )`
+
+Event that is triggered when this actor's consciousness state changes
+
+([TOC](#table-of-contents))
+
+###### Event: OnCripple
+`Event OnCripple(ActorValue akActorValue, bool abCrippled)`
+
+Recieved immeadiately after a limb has become crippled or uncrippled.
+
+([TOC](#table-of-contents))
+
+###### Event: OnDeferredKill
+`Event OnDeferredKill(Actor akKiller)`
+
+Event that is triggered when this actor gets a deferred kill added
+
+(they were in deferred kill mode and got "killed")
+
+([TOC](#table-of-contents))
+
+###### Event: OnDeath
+`Event OnDeath(ObjectReference akKiller)`
+
+Event that is triggered when this actor finishes dying
+
+([TOC](#table-of-contents))
+
+###### Event: OnDifficultyChanged
+`Event OnDifficultyChanged(int aOldDifficulty, int aNewDifficulty)`
+
+Event received when the player changes their difficulty
+
+Type is as follows:
+- 0 - Very Easy
+- 1 - Easy
+- 2 - Normal
+- 3 - Hard
+- 4 - Very Hard
+- 5 - Survival
+
+([TOC](#table-of-contents))
+
+###### Event: OnDying
+`Event OnDying(ObjectReference akKiller)`
+
+Event that is triggered when this actor begins to die
+
+([TOC](#table-of-contents))
+
+###### Event: OnEnterBleedout
+`Event OnEnterBleedout()`
+
+Event received when an actor enters bleedout.
+
+([TOC](#table-of-contents))
+
+###### Event: OnEnterOutpostBeaconMode
+`Event OnEnterOutpostBeaconMode()`
+
+Event received when the player enters Outpost Beacon placement mode.
+
+([TOC](#table-of-contents))
+
+###### Event: OnEnterShipInterior
+`Event OnEnterShipInterior(ObjectReference akShip)`
+
+Event received when an actor enters a ship interior cell
+
+([TOC](#table-of-contents))
+
+###### Event: OnEnterSneaking
+`Event OnEnterSneaking()`
+
+Event received when an actor enters sneaking.
+
+([TOC](#table-of-contents))
+
+###### Event: OnEscortWaitStart
+`Event OnEscortWaitStart()`
+
+Event received when this actor is in an Escort procedure and begins waiting for the escorted actor to catch up.
+
+([TOC](#table-of-contents))
+
+###### Event: OnEscortWaitStop
+`Event OnEscortWaitStop()`
+
+Event received when this actor is in an Escort procedure and stops waiting because the escorted actor has caught up.
+
+([TOC](#table-of-contents))
+
+###### Event: OnExitShipInterior
+`Event OnExitShipInterior(ObjectReference akShip)`
+
+Event received when an actor exits a ship interior cell
+
+([TOC](#table-of-contents))
+
+###### Event: OnGetUp
+`Event OnGetUp(ObjectReference akFurniture)`
+
+Event that is triggered when this actor leaves the furniture
+
+([TOC](#table-of-contents))
+
+###### Event: OnHomeShipSet
+`Event OnHomeShipSet(SpaceshipReference akShip, SpaceshipReference akPrevious)`
+
+Event that is triggered when the actors home ship is set.
+
+([TOC](#table-of-contents))
+
+###### Event: OnItemEquipped
+`Event OnItemEquipped(Form akBaseObject, ObjectReference akReference)`
+
+Event received when this actor equips something - akReference may be None if object is not persistent
+
+([TOC](#table-of-contents))
+
+###### Event: OnItemUnequipped
+`Event OnItemUnequipped(Form akBaseObject, ObjectReference akReference)`
+
+Event received when this actor unequips something - akReference may be None if object is not persistent
+
+([TOC](#table-of-contents))
+
+###### Event: OnKill
+`Event OnKill(ObjectReference akVictim)`
+
+Event that is triggered when this actor kills another
+
+([TOC](#table-of-contents))
+
+###### Event: OnLocationChange
+`Event OnLocationChange(Location akOldLoc, Location akNewLoc)`
+
+Event that is triggered when this actor changes from one location to another
+
+([TOC](#table-of-contents))
+
+###### Event: OnOutpostPlaced
+`Event OnOutpostPlaced(ObjectReference akOutpostBeacon)`
+
+Received when player placed an outpost beacon
+
+([TOC](#table-of-contents))
+
+###### Event: OnPackageChange
+`Event OnPackageChange(Package akOldPackage)`
+
+Event received when this actor's package changes
+
+([TOC](#table-of-contents))
+
+###### Event: OnPackageEnd
+`Event OnPackageEnd(Package akOldPackage)`
+
+Event received when this actor's package ends
+
+([TOC](#table-of-contents))
+
+###### Event: OnPackageStart
+`Event OnPackageStart(Package akNewPackage)`
+
+Event received when this actor starts a new package
+
+([TOC](#table-of-contents))
+
+###### Event: OnPartialCripple
+`Event OnPartialCripple(ActorValue akActorValue, bool abCrippled)`
+
+Received immediately after the limb of a robot (or other actor whose race allows sub-segment damage) has become (or ceased to be) partially crippled.
+
+([TOC](#table-of-contents))
+
+###### Event: OnPickLock
+`Event OnPickLock(ObjectReference akLockedRef, bool abCrime, bool abSucceeded, TerminalMenu akLockedTerminalMenu, int aiTerminalMenuItem)`
+
+Event received when an actor picks a lock
+
+([TOC](#table-of-contents))
+
+###### Event: OnPickpocketFailed
+`Event OnPickpocketFailed()`
+
+Received when the player fails to pickpocket this actor
+
+([TOC](#table-of-contents))
+
+###### Event: OnPlayerArrested
+`Event OnPlayerArrested(ObjectReference akGuard, Location akLocation, int aeCrimeType )`
+
+Event that is triggered when the player is arrested.
+
+([TOC](#table-of-contents))
+
+###### Event: OnPlayerAssaultActor
+`Event OnPlayerAssaultActor(ObjectReference akVictim, Location akLocation, bool aeCrime )`
+
+Event that is triggered when the player assaults someone.
+
+([TOC](#table-of-contents))
+
+###### Event: OnPlayerBuyShip
+`Event OnPlayerBuyShip(SpaceshipReference akShip)`
+
+Event that is triggered when the player buys a ship
+
+([TOC](#table-of-contents))
+
+###### Event: OnPlayerCraftItem
+`Event OnPlayerCraftItem(ObjectReference akBench, Location akLocation, Form akCreatedItem)`
+
+Received when player crafts an item
+
+([TOC](#table-of-contents))
+
+###### Event: OnPlayerCreateRobot
+`Event OnPlayerCreateRobot(Actor akNewRobot)`
+
+Received when player creates a new robot
+
+([TOC](#table-of-contents))
+
+###### Event: OnPlayerCompleteResearch
+`Event OnPlayerCompleteResearch(ObjectReference akBench, Location akLocation, ResearchProject akProject)`
+
+Received when player completes research
+
+([TOC](#table-of-contents))
+
+###### Event: OnPlayerCrimeGold
+`Event OnPlayerCrimeGold(ObjectReference akVictim, Form akFaction, int aeCrimeGold, int aeCrimeType )`
+
+Event that is triggered when the player gets crimegold .
+
+([TOC](#table-of-contents))
+
+###### Event: OnPlayerEnterVertibird
+`Event OnPlayerEnterVertibird(ObjectReference akVertibird)`
+
+Received when player enters vertibird
+
+([TOC](#table-of-contents))
+
+###### Event: OnPlayerFailedPlotRoute
+`Event OnPlayerFailedPlotRoute(int aeFailedPlotReason)`
+
+Event received when the player plots a failed starmap route
+
+Type is as follows:
+- 0 - Success
+- 1 - Insufficient Fuel
+- 2 - Out of Range
+- 3 - Unexplored System
+
+([TOC](#table-of-contents))
+
+###### Event: OnPlayerFallLongDistance
+`Event OnPlayerFallLongDistance(float afDamage)`
+
+Received when player takes fall damage
+
+([TOC](#table-of-contents))
+
+###### Event: OnPlayerFireWeapon
+`Event OnPlayerFireWeapon(Form akBaseObject)`
+
+Received when player fires a weapon out of combat and based on timer
+
+([TOC](#table-of-contents))
+
+###### Event: OnPlayerFollowerWarp
+`Event OnPlayerFollowerWarp(ObjectReference akFollower)`
+
+Event received when a player follower is warped
+
+([TOC](#table-of-contents))
+
+###### Event: OnPlayerHealTeammate
+`Event OnPlayerHealTeammate(Actor akTeammate)`
+
+Received when player heals his teammate
+
+([TOC](#table-of-contents))
+
+###### Event: OnPlayerItemAdded
+`Event OnPlayerItemAdded(Form akBaseObject, ObjectReference akOwner, ObjectReference akSourceContainer, int aeAcquireType)`
+
+Received when the player gains an item in their inventory
+
+`aeAcquireType` is one of the following:
+- 0: None
+- 1: Steal
+- 2: Buy
+- 3: Pickpocket
+- 4: Pickup
+- 5: Container
+- 6: Dead body
+
+([TOC](#table-of-contents))
+
+###### Event: OnPlayerJail
+`Event OnPlayerJail(ObjectReference akGuard, Form akFaction,  Location akLocation,int aeCrimeGold)`
+
+Event that is triggered when the player goes to jail.
+
+([TOC](#table-of-contents))
+
+###### Event: OnPlayerLoadGame
+`Event OnPlayerLoadGame()`
+
+Received immediately after the player has loaded a save game. A good time to check for additional content.
+
+([TOC](#table-of-contents))
+
+###### Event: OnPlayerLoiteringBegin
+`Event OnPlayerLoiteringBegin()`
+
+Received when player starts loitering
+
+([TOC](#table-of-contents))
+
+###### Event: OnPlayerLoiteringEnd
+`Event OnPlayerLoiteringEnd()`
+
+Received when player stops loitering
+
+([TOC](#table-of-contents))
+
+###### Event: OnPlayerModArmorWeapon
+`Event OnPlayerModArmorWeapon(Form akBaseObject, ObjectMod akModBaseObject)`
+
+Received when player mods a weapon or armor in the menu.
+
+([TOC](#table-of-contents))
+
+###### Event: OnPlayerModifiedShip
+`Event OnPlayerModifiedShip(SpaceshipReference akShip)`
+
+Event that is triggered when an actor modifies a ship
+
+([TOC](#table-of-contents))
+
+###### Event: OnPlayerModRobot
+`Event OnPlayerModRobot(Actor akRobot, ObjectMod akModBaseObject)`
+
+Received when the player mods a robot
+
+([TOC](#table-of-contents))
+
+###### Event: OnPlayerMurderActor
+`Event OnPlayerMurderActor(ObjectReference akVictim, Location akLocation, bool aeCrime )`
+
+Event that is triggered when the player murders someone.
+
+([TOC](#table-of-contents))
+
+###### Event: OnPlayerPayFine
+`Event OnPlayerPayFine(ObjectReference akGuard, Form akFaction, int aeCrimeGold)`
+
+Event that is triggered when the player pays fine.
+
+([TOC](#table-of-contents))
+
+###### Event: OnPlayerPlanetSurveyComplete
+`Event OnPlayerPlanetSurveyComplete(Planet akPlanet)`
+
+Received when player completely surveyed a planet
+
+([TOC](#table-of-contents))
+
+###### Event: OnPlayerScannedObject
+`Event OnPlayerScannedObject(ObjectReference akScannedRef)`
+
+Received by the player when they scan an object
+
+([TOC](#table-of-contents))
+
+###### Event: OnPlayerSellShip
+`Event OnPlayerSellShip(SpaceshipReference akShip)`
+
+Event that is triggered when the player sells a ship
+
+([TOC](#table-of-contents))
+
+###### Event: OnPlayerSwimming
+`Event OnPlayerSwimming()`
+
+Received when player starts swimming
+
+([TOC](#table-of-contents))
+
+###### Event: OnPlayerTrespass
+`Event OnPlayerTrespass(ObjectReference akVictim, Location akLocation,bool aeCrime)`
+
+Event that is triggered when the player trespassing.
+
+([TOC](#table-of-contents))
+
+###### Event: OnPlayerUseWorkBench
+`Event OnPlayerUseWorkBench(ObjectReference akWorkBench)`
+
+Received when player uses a workbench
+
+([TOC](#table-of-contents))
+
+###### Event: OnRaceSwitchComplete
+`Event OnRaceSwitchComplete()`
+
+Event received when this actor finishes changing its race
+
+([TOC](#table-of-contents))
+
+###### Event: OnRecoverFromBleedout
+`Event OnRecoverFromBleedout()`
+
+Event received when an actor exits bleedout.
+
+([TOC](#table-of-contents))
+
+###### Event: OnSit
+`Event OnSit(ObjectReference akFurniture)`
+
+Event that is triggered when this actor sits in the furniture
+
+([TOC](#table-of-contents))
+
+###### Event: OnSpeechChallengeAvailable
+`Event OnSpeechChallengeAvailable(ObjectReference akSpeaker)`
+
+Received when player gets a speech challenge in dialogue
+
+([TOC](#table-of-contents))
+
+###### Event: OnUnconscious
+`Event OnUnconscious(ObjectReference akAttacker)`
+
+Event that is triggered when an actor has been "killed" with EM weapons (the actor is still alive)
+
+([TOC](#table-of-contents))
+
 ###### Property: PathingResult_Success
 `int Property PathingResult_Success = 0 AutoReadOnly`
 
@@ -16811,556 +17361,6 @@ Add this object to the dog's mouth
 `Function DogDropItems( ) native`
 
 Drop the dog's items in the world
-
-([TOC](#table-of-contents))
-
-###### Event: OnActorActivatedRef
-`Event OnActorActivatedRef(ObjectReference akActivatedRef)`
-
-Event received when this actor activates a ref
-
-([TOC](#table-of-contents))
-
-###### Event: OnAffinityEvent
-`Event OnAffinityEvent(AffinityEvent akAffinityEvent, ActorValue akActorValue, GlobalVariable akReactionValue, ObjectReference akTarget)`
-
-Event received when affinity event is run
-
-([TOC](#table-of-contents))
-
-###### Event: OnCombatStateChanged
-`Event OnCombatStateChanged(ObjectReference akTarget, int aeCombatState)`
-
-Event that is triggered when this actor's combat state against the target changes
-
-State is as follows:
-- 0 - not in combat
-- 1 - in combat
-- 2 - searching
-
-([TOC](#table-of-contents))
-
-###### Event: OnCombatListAdded
-`Event OnCombatListAdded(Actor akTarget)`
-
-Event that is triggered when this actor adds another actor to its combat list.
-
-([TOC](#table-of-contents))
-
-###### Event: OnCombatListRemoved
-`Event OnCombatListRemoved(Actor akTarget)`
-
-Event that is triggered when this actor removes another actor from its combat list.
-
-([TOC](#table-of-contents))
-
-###### Event: OnCommandModeCompleteCommand
-`Event OnCommandModeCompleteCommand(int aeCommandType, ObjectReference akTarget)`
-
-Event received when the actor completes a command in command mode.
-
-Type is as follows:
-- 0 - None
-- 1 - Call
-- 2 - Follow
-- 3 - Move
-- 4 - Attack
-- 5 - Inspect
-- 6 - Retrieve
-- 7 - Stay
-- 8 - Release
-- 9 - Heal
-- 10 - Assign
-- 11 - Ride
-- 12 - Enter
-
-([TOC](#table-of-contents))
-
-###### Event: OnCommandModeEnter
-`Event OnCommandModeEnter()`
-
-Event received when the player begins commanding this actor.
-
-([TOC](#table-of-contents))
-
-###### Event: OnCommandModeExit
-`Event OnCommandModeExit()`
-
-Event received when the player ends commanding this actor.
-
-([TOC](#table-of-contents))
-
-###### Event: OnCommandModeGiveCommand
-`Event OnCommandModeGiveCommand(int aeCommandType, ObjectReference akTarget)`
-
-Event received when the player gives actor a command in command mode.
-
-Type is as follows:
-- 0 - None
-- 1 - Call
-- 2 - Follow
-- 3 - Move
-- 4 - Attack
-- 5 - Inspect
-- 6 - Retrieve
-- 7 - Stay
-- 8 - Release
-- 9 - Heal
-- 10 - Assign
-- 11 - Ride
-- 12 - Enter
-
-([TOC](#table-of-contents))
-
-###### Event: OnCompanionDismiss
-`Event OnCompanionDismiss()`
-
-Received when player dismisses teammate companion
-
-([TOC](#table-of-contents))
-
-###### Event: OnConsciousnessStateChanged
-`Event OnConsciousnessStateChanged( bool abUnconscious )`
-
-Event that is triggered when this actor's consciousness state changes
-
-([TOC](#table-of-contents))
-
-###### Event: OnCripple
-`Event OnCripple(ActorValue akActorValue, bool abCrippled)`
-
-Recieved immeadiately after a limb has become crippled or uncrippled.
-
-([TOC](#table-of-contents))
-
-###### Event: OnDeferredKill
-`Event OnDeferredKill(Actor akKiller)`
-
-Event that is triggered when this actor gets a deferred kill added
-
-(they were in deferred kill mode and got "killed")
-
-([TOC](#table-of-contents))
-
-###### Event: OnDeath
-`Event OnDeath(ObjectReference akKiller)`
-
-Event that is triggered when this actor finishes dying
-
-([TOC](#table-of-contents))
-
-###### Event: OnDifficultyChanged
-`Event OnDifficultyChanged(int aOldDifficulty, int aNewDifficulty)`
-
-Event received when the player changes their difficulty
-
-Type is as follows:
-- 0 - Very Easy
-- 1 - Easy
-- 2 - Normal
-- 3 - Hard
-- 4 - Very Hard
-- 5 - Survival
-
-([TOC](#table-of-contents))
-
-###### Event: OnDying
-`Event OnDying(ObjectReference akKiller)`
-
-Event that is triggered when this actor begins to die
-
-([TOC](#table-of-contents))
-
-###### Event: OnUnconscious
-`Event OnUnconscious(ObjectReference akAttacker)`
-
-Event that is triggered when an actor has been "killed" with EM weapons (the actor is still alive)
-
-([TOC](#table-of-contents))
-
-###### Event: OnEnterBleedout
-`Event OnEnterBleedout()`
-
-Event received when an actor enters bleedout.
-
-([TOC](#table-of-contents))
-
-###### Event: OnEnterOutpostBeaconMode
-`Event OnEnterOutpostBeaconMode()`
-
-Event received when the player enters Outpost Beacon placement mode.
-
-([TOC](#table-of-contents))
-
-###### Event: OnEnterShipInterior
-`Event OnEnterShipInterior(ObjectReference akShip)`
-
-Event received when an actor enters a ship interior cell
-
-([TOC](#table-of-contents))
-
-###### Event: OnEnterSneaking
-`Event OnEnterSneaking()`
-
-Event received when an actor enters sneaking.
-
-([TOC](#table-of-contents))
-
-###### Event: OnEscortWaitStart
-`Event OnEscortWaitStart()`
-
-Event received when this actor is in an Escort procedure and begins waiting for the escorted actor to catch up.
-
-([TOC](#table-of-contents))
-
-###### Event: OnEscortWaitStop
-`Event OnEscortWaitStop()`
-
-Event received when this actor is in an Escort procedure and stops waiting because the escorted actor has caught up.
-
-([TOC](#table-of-contents))
-
-###### Event: OnExitShipInterior
-`Event OnExitShipInterior(ObjectReference akShip)`
-
-Event received when an actor exits a ship interior cell
-
-([TOC](#table-of-contents))
-
-###### Event: OnPlayerFollowerWarp
-`Event OnPlayerFollowerWarp(ObjectReference akFollower)`
-
-Event received when a player follower is warped
-
-([TOC](#table-of-contents))
-
-###### Event: OnGetUp
-`Event OnGetUp(ObjectReference akFurniture)`
-
-Event that is triggered when this actor leaves the furniture
-
-([TOC](#table-of-contents))
-
-###### Event: OnHomeShipSet
-`Event OnHomeShipSet(SpaceshipReference akShip, SpaceshipReference akPrevious)`
-
-Event that is triggered when the actors home ship is set.
-
-([TOC](#table-of-contents))
-
-###### Event: OnPlayerFailedPlotRoute
-`Event OnPlayerFailedPlotRoute(int aeFailedPlotReason)`
-
-Event received when the player plots a failed starmap route
-
-Type is as follows:
-- 0 - Success
-- 1 - Insufficient Fuel
-- 2 - Out of Range
-- 3 - Unexplored System
-
-([TOC](#table-of-contents))
-
-###### Event: OnPlayerModifiedShip
-`Event OnPlayerModifiedShip(SpaceshipReference akShip)`
-
-Event that is triggered when an actor modifies a ship
-
-([TOC](#table-of-contents))
-
-###### Event: OnItemEquipped
-`Event OnItemEquipped(Form akBaseObject, ObjectReference akReference)`
-
-Event received when this actor equips something - akReference may be None if object is not persistent
-
-([TOC](#table-of-contents))
-
-###### Event: OnItemUnequipped
-`Event OnItemUnequipped(Form akBaseObject, ObjectReference akReference)`
-
-Event received when this actor unequips something - akReference may be None if object is not persistent
-
-([TOC](#table-of-contents))
-
-###### Event: OnKill
-`Event OnKill(ObjectReference akVictim)`
-
-Event that is triggered when this actor kills another
-
-([TOC](#table-of-contents))
-
-###### Event: OnLocationChange
-`Event OnLocationChange(Location akOldLoc, Location akNewLoc)`
-
-Event that is triggered when this actor changes from one location to another
-
-([TOC](#table-of-contents))
-
-###### Event: OnRecoverFromBleedout
-`Event OnRecoverFromBleedout()`
-
-Event received when an actor exits bleedout.
-
-([TOC](#table-of-contents))
-
-###### Event: OnPackageChange
-`Event OnPackageChange(Package akOldPackage)`
-
-Event received when this actor's package changes
-
-([TOC](#table-of-contents))
-
-###### Event: OnPackageEnd
-`Event OnPackageEnd(Package akOldPackage)`
-
-Event received when this actor's package ends
-
-([TOC](#table-of-contents))
-
-###### Event: OnPackageStart
-`Event OnPackageStart(Package akNewPackage)`
-
-Event received when this actor starts a new package
-
-([TOC](#table-of-contents))
-
-###### Event: OnPartialCripple
-`Event OnPartialCripple(ActorValue akActorValue, bool abCrippled)`
-
-Received immediately after the limb of a robot (or other actor whose race allows sub-segment damage) has become (or ceased to be) partially crippled.
-
-([TOC](#table-of-contents))
-
-###### Event: OnPickLock
-`Event OnPickLock(ObjectReference akLockedRef, bool abCrime, bool abSucceeded, TerminalMenu akLockedTerminalMenu, int aiTerminalMenuItem)`
-
-Event received when an actor picks a lock
-
-([TOC](#table-of-contents))
-
-###### Event: OnPickpocketFailed
-`Event OnPickpocketFailed()`
-
-Received when the player fails to pickpocket this actor
-
-([TOC](#table-of-contents))
-
-###### Event: OnPlayerItemAdded
-`Event OnPlayerItemAdded(Form akBaseObject, ObjectReference akOwner, ObjectReference akSourceContainer, int aeAcquireType)`
-
-Received when the player gains an item in their inventory
-
-`aeAcquireType` is one of the following:
-- 0: None
-- 1: Steal
-- 2: Buy
-- 3: Pickpocket
-- 4: Pickup
-- 5: Container
-- 6: Dead body
-
-([TOC](#table-of-contents))
-
-###### Event: OnPlayerCompleteResearch
-`Event OnPlayerCompleteResearch(ObjectReference akBench, Location akLocation, ResearchProject akProject)`
-
-Received when player completes research
-
-([TOC](#table-of-contents))
-
-###### Event: OnPlayerCraftItem
-`Event OnPlayerCraftItem(ObjectReference akBench, Location akLocation, Form akCreatedItem)`
-
-Received when player crafts an item
-
-([TOC](#table-of-contents))
-
-###### Event: OnPlayerCreateRobot
-`Event OnPlayerCreateRobot(Actor akNewRobot)`
-
-Received when player creates a new robot
-
-([TOC](#table-of-contents))
-
-###### Event: OnPlayerEnterVertibird
-`Event OnPlayerEnterVertibird(ObjectReference akVertibird)`
-
-Received when player enters vertibird
-
-([TOC](#table-of-contents))
-
-###### Event: OnPlayerFallLongDistance
-`Event OnPlayerFallLongDistance(float afDamage)`
-
-Received when player takes fall damage
-
-([TOC](#table-of-contents))
-
-###### Event: OnPlayerFireWeapon
-`Event OnPlayerFireWeapon(Form akBaseObject)`
-
-Received when player fires a weapon out of combat and based on timer
-
-([TOC](#table-of-contents))
-
-###### Event: OnPlayerHealTeammate
-`Event OnPlayerHealTeammate(Actor akTeammate)`
-
-Received when player heals his teammate
-
-([TOC](#table-of-contents))
-
-###### Event: OnPlayerLoadGame
-`Event OnPlayerLoadGame()`
-
-Received immediately after the player has loaded a save game. A good time to check for additional content.
-
-([TOC](#table-of-contents))
-
-###### Event: OnPlayerLoiteringBegin
-`Event OnPlayerLoiteringBegin()`
-
-Received when player starts loitering
-
-([TOC](#table-of-contents))
-
-###### Event: OnPlayerLoiteringEnd
-`Event OnPlayerLoiteringEnd()`
-
-Received when player stops loitering
-
-([TOC](#table-of-contents))
-
-###### Event: OnPlayerModArmorWeapon
-`Event OnPlayerModArmorWeapon(Form akBaseObject, ObjectMod akModBaseObject)`
-
-Received when player mods a weapon or armor in the menu.
-
-([TOC](#table-of-contents))
-
-###### Event: OnPlayerModRobot
-`Event OnPlayerModRobot(Actor akRobot, ObjectMod akModBaseObject)`
-
-Received when the player mods a robot
-
-([TOC](#table-of-contents))
-
-###### Event: OnPlayerSwimming
-`Event OnPlayerSwimming()`
-
-Received when player starts swimming
-
-([TOC](#table-of-contents))
-
-###### Event: OnPlayerUseWorkBench
-`Event OnPlayerUseWorkBench(ObjectReference akWorkBench)`
-
-Received when player uses a workbench
-
-([TOC](#table-of-contents))
-
-###### Event: OnRaceSwitchComplete
-`Event OnRaceSwitchComplete()`
-
-Event received when this actor finishes changing its race
-
-([TOC](#table-of-contents))
-
-###### Event: OnSit
-`Event OnSit(ObjectReference akFurniture)`
-
-Event that is triggered when this actor sits in the furniture
-
-([TOC](#table-of-contents))
-
-###### Event: OnSpeechChallengeAvailable
-`Event OnSpeechChallengeAvailable(ObjectReference akSpeaker)`
-
-Received when player gets a speech challenge in dialogue
-
-([TOC](#table-of-contents))
-
-###### Event: OnPlayerPlanetSurveyComplete
-`Event OnPlayerPlanetSurveyComplete(Planet akPlanet)`
-
-Received when player completely surveyed a planet
-
-([TOC](#table-of-contents))
-
-###### Event: OnPlayerScannedObject
-`Event OnPlayerScannedObject(ObjectReference akScannedRef)`
-
-Received by the player when they scan an object
-
-([TOC](#table-of-contents))
-
-###### Event: OnOutpostPlaced
-`Event OnOutpostPlaced(ObjectReference akOutpostBeacon)`
-
-Received when player placed an outpost beacon
-
-([TOC](#table-of-contents))
-
-###### Event: OnPlayerArrested
-`Event OnPlayerArrested(ObjectReference akGuard, Location akLocation, int aeCrimeType )`
-
-Event that is triggered when the player is arrested.
-
-([TOC](#table-of-contents))
-
-###### Event: OnPlayerAssaultActor
-`Event OnPlayerAssaultActor(ObjectReference akVictim, Location akLocation, bool aeCrime )`
-
-Event that is triggered when the player assaults someone.
-
-([TOC](#table-of-contents))
-
-###### Event: OnPlayerCrimeGold
-`Event OnPlayerCrimeGold(ObjectReference akVictim, Form akFaction, int aeCrimeGold, int aeCrimeType )`
-
-Event that is triggered when the player gets crimegold .
-
-([TOC](#table-of-contents))
-
-###### Event: OnPlayerJail
-`Event OnPlayerJail(ObjectReference akGuard, Form akFaction,  Location akLocation,int aeCrimeGold)`
-
-Event that is triggered when the player goes to jail.
-
-([TOC](#table-of-contents))
-
-###### Event: OnPlayerPayFine
-`Event OnPlayerPayFine(ObjectReference akGuard, Form akFaction, int aeCrimeGold)`
-
-Event that is triggered when the player pays fine.
-
-([TOC](#table-of-contents))
-
-###### Event: OnPlayerMurderActor
-`Event OnPlayerMurderActor(ObjectReference akVictim, Location akLocation, bool aeCrime )`
-
-Event that is triggered when the player murders someone.
-
-([TOC](#table-of-contents))
-
-###### Event: OnPlayerTrespass
-`Event OnPlayerTrespass(ObjectReference akVictim, Location akLocation,bool aeCrime)`
-
-Event that is triggered when the player trespassing.
-
-([TOC](#table-of-contents))
-
-###### Event: OnPlayerBuyShip
-`Event OnPlayerBuyShip(SpaceshipReference akShip)`
-
-Event that is triggered when the player buys a ship
-
-([TOC](#table-of-contents))
-
-###### Event: OnPlayerSellShip
-`Event OnPlayerSellShip(SpaceshipReference akShip)`
-
-Event that is triggered when the player sells a ship
 
 ([TOC](#table-of-contents))
 
