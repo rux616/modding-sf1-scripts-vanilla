@@ -38,6 +38,8 @@ Event OnActivate(ObjectReference akActionRef)
                 theShipServicesActor.myLandingMarker.ShowHangarMenu(0, theShipServicesActor, abOpenToAvailableTab = false)
             elseif messageIndex == 1
                 theShipServicesActor.myLandingMarker.ShowHangarMenu(0, theShipServicesActor, abOpenToAvailableTab = true)
+            elseif messageIndex == 2
+                theShipServicesActor.myLandingMarker.ShowHangarMenu(1, theShipServicesActor)
             endif
         endif
     endif
