@@ -1,5 +1,5 @@
-# modding-sf1-scripts-vanilla
-Contains the script sources for vanilla Starfield. Intended to be used as a submodule.
+# Starfield Scripts
+Contains the script sources for vanilla Starfield. Intended to be used as a submodule. Tags are in the format `<Identifier_Name>-v<Version>-<SteamBuildID>`.
 
 Starfield Creation Kit v1.12.36.0, Steam Build ID 14867505 (for Starfield v1.12.36.0, Steam Build ID 14849439)
 
