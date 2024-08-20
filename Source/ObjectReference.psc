@@ -911,6 +911,9 @@ Function PushActorAway(Actor akActorToPush, float aiKnockbackForce) native
 ; Removes all items from this container, transferring it to the other object if passed
 Function RemoveAllItems(ObjectReference akTransferTo = None, bool abKeepOwnership = false, bool abRespectTargetCapacity = false) native
 
+; Removes all items from this container, transferring it to the other object if passed, silent param to supress warnings
+Function RemoveAllItemsEx(ObjectReference akTransferTo = None, bool abKeepOwnership = false, bool abRespectTargetCapacity = false, bool abSilent = false) native
+
 ; Removes the specified count of resource from the container, scrapping items, and returning the remainder to said container.
 ; The function returns the number of resource actually removed from the container
 int Function RemoveResources(Resource akResource, int aiCount, bool abSilent = false) native

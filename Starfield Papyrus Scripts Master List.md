@@ -1,6 +1,6 @@
 # Starfield Papyrus Scripts Master List
 
-Starfield v1.12.32.0
+Starfield v1.13.61.0
 
 ## Table Of Contents
 - [Starfield Papyrus Scripts Master List](#starfield-papyrus-scripts-master-list)
@@ -979,6 +979,7 @@ Starfield v1.12.32.0
                 - [Function: RemovePlayerContrabandAndStolenItems (Native)](#function-removeplayercontrabandandstolenitems-native)
                 - [Function: SendAssaultAlarm (Native)](#function-sendassaultalarm-native)
                 - [Function: SendPlayerToJail (Native)](#function-sendplayertojail-native)
+                - [Function: SendPlayerToJailEx (Native)](#function-sendplayertojailex-native)
                 - [Function: SetAlly (Native)](#function-setally-native)
                 - [Function: SetCrimeGold (Native)](#function-setcrimegold-native)
                 - [Function: SetCrimeGoldViolent (Native)](#function-setcrimegoldviolent-native)
@@ -1439,6 +1440,7 @@ Starfield v1.12.32.0
                 - [Function: PromoteToLegendary (Native)](#function-promotetolegendary-native)
                 - [Function: PushActorAway (Native)](#function-pushactoraway-native)
                 - [Function: RemoveAllItems (Native)](#function-removeallitems-native)
+                - [Function: RemoveAllItemsEx (Native)](#function-removeallitemsex-native)
                 - [Function: RemoveResources (Native)](#function-removeresources-native)
                 - [Function: RemoveItem (Native)](#function-removeitem-native)
                 - [Function: RemoveItemByComponent (Native)](#function-removeitembycomponent-native)
@@ -11293,6 +11295,13 @@ Sends the player to this faction's jail - removing inventory if requested, and t
 
 ([TOC](#table-of-contents))
 
+##### Function: SendPlayerToJailEx (Native)
+`Function SendPlayerToJailEx(bool abRemoveInventory = true, bool abRealJail = false, bool abSilent = false) native`
+
+Sends the player to this faction's jail - removing inventory if requested, and to a "real" jail or not, silent param to suppress warnings
+
+([TOC](#table-of-contents))
+
 ##### Function: SetAlly (Native)
 `Function SetAlly(Faction akOther, bool abSelfIsFriendToOther = false, bool abOtherIsFriendToSelf = false) native`
 
@@ -14558,6 +14567,13 @@ Pushes the passed-in actor away from this object, using the passed in knockback 
 `Function RemoveAllItems(ObjectReference akTransferTo = None, bool abKeepOwnership = false, bool abRespectTargetCapacity = false) native`
 
 Removes all items from this container, transferring it to the other object if passed
+
+([TOC](#table-of-contents))
+
+##### Function: RemoveAllItemsEx (Native)
+`Function RemoveAllItemsEx(ObjectReference akTransferTo = None, bool abKeepOwnership = false, bool abRespectTargetCapacity = false, bool abSilent = false) native`
+
+Removes all items from this container, transferring it to the other object if passed, silent param to supress warnings
 
 ([TOC](#table-of-contents))
 

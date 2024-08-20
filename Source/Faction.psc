@@ -58,6 +58,9 @@ Function SendAssaultAlarm() native
 ; Sends the player to this faction's jail - removing inventory if requested, and to a "real" jail or not
 Function SendPlayerToJail(bool abRemoveInventory = true, bool abRealJail = false) native
 
+; Sends the player to this faction's jail - removing inventory if requested, and to a "real" jail or not, silent param to supress warnings
+Function SendPlayerToJailEx(bool abRemoveInventory = true, bool abRealJail = false, bool abSilent = false) native
+
 ; Sets this faction and the other as allies or friends - if the friend booleans are true - the specified one-way relationship
 ; is a friend instead of an ally
 Function SetAlly(Faction akOther, bool abSelfIsFriendToOther = false, bool abOtherIsFriendToSelf = false) native

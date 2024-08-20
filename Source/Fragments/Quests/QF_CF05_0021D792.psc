@@ -780,10 +780,14 @@ EndFunction
 
 ;BEGIN FRAGMENT Fragment_Stage_0500_Item_00
 Function Fragment_Stage_0500_Item_00()
-;BEGIN AUTOCAST TYPE DefaultQuestChangeLocationScript
-Quest __temp = self as Quest
-DefaultQuestChangeLocationScript kmyQuest = __temp as DefaultQuestChangeLocationScript
-;END AUTOCAST
+;BEGIN CODE
+FFNewAtlantis05.SetStage(2)
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_Stage_0500_Item_01
+Function Fragment_Stage_0500_Item_01()
 ;BEGIN CODE
 SetObjectiveCompleted(400)
 SetObjectiveDisplayed(500)
@@ -813,14 +817,6 @@ if !LandingPad.HasKeyword(PreventPlayerLandingAtMarker)
     LandingPad.AddKeyword(PreventPlayerLandingAtMarker)
     SetStage(498)
 endif
-;END CODE
-EndFunction
-;END FRAGMENT
-
-;BEGIN FRAGMENT Fragment_Stage_0500_Item_01
-Function Fragment_Stage_0500_Item_01()
-;BEGIN CODE
-FFNewAtlantis05.SetStage(2)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -1028,9 +1024,9 @@ EndFunction
 
 ;BEGIN FRAGMENT Fragment_Stage_0714_Item_00
 Function Fragment_Stage_0714_Item_00()
-;BEGIN AUTOCAST TYPE CF05_LayerScript
+;BEGIN AUTOCAST TYPE cf05_layerscript
 Quest __temp = self as Quest
-CF05_LayerScript kmyQuest = __temp as CF05_LayerScript
+cf05_layerscript kmyQuest = __temp as cf05_layerscript
 ;END AUTOCAST
 ;BEGIN CODE
 ;Jade Swan takeoff initiated - prevent player exiting ship
@@ -1124,9 +1120,9 @@ EndFunction
 
 ;BEGIN FRAGMENT Fragment_Stage_0746_Item_00
 Function Fragment_Stage_0746_Item_00()
-;BEGIN AUTOCAST TYPE CF05_LayerScript
+;BEGIN AUTOCAST TYPE cf05_layerscript
 Quest __temp = self as Quest
-CF05_LayerScript kmyQuest = __temp as CF05_LayerScript
+cf05_layerscript kmyQuest = __temp as cf05_layerscript
 ;END AUTOCAST
 ;BEGIN CODE
 SetObjectiveCompleted(755)
@@ -2202,9 +2198,9 @@ EndFunction
 
 ;BEGIN FRAGMENT Fragment_Stage_1800_Item_00
 Function Fragment_Stage_1800_Item_00()
-;BEGIN AUTOCAST TYPE CF05_LayerScript
+;BEGIN AUTOCAST TYPE cf05_layerscript
 Quest __temp = self as Quest
-CF05_LayerScript kmyQuest = __temp as CF05_LayerScript
+cf05_layerscript kmyQuest = __temp as cf05_layerscript
 ;END AUTOCAST
 ;BEGIN CODE
 SetObjectiveSkipped(1014)
@@ -2243,9 +2239,9 @@ EndFunction
 
 ;BEGIN FRAGMENT Fragment_Stage_1899_Item_00
 Function Fragment_Stage_1899_Item_00()
-;BEGIN AUTOCAST TYPE CF05_LayerScript
+;BEGIN AUTOCAST TYPE cf05_layerscript
 Quest __temp = self as Quest
-CF05_LayerScript kmyQuest = __temp as CF05_LayerScript
+cf05_layerscript kmyQuest = __temp as cf05_layerscript
 ;END AUTOCAST
 ;BEGIN CODE
 kmyquest.CF05_Layer.Delete()
@@ -2255,9 +2251,9 @@ EndFunction
 
 ;BEGIN FRAGMENT Fragment_Stage_1900_Item_00
 Function Fragment_Stage_1900_Item_00()
-;BEGIN AUTOCAST TYPE DefaultQuestChangeLocationScript
+;BEGIN AUTOCAST TYPE defaultquestchangelocationscript
 Quest __temp = self as Quest
-DefaultQuestChangeLocationScript kmyQuest = __temp as DefaultQuestChangeLocationScript
+defaultquestchangelocationscript kmyQuest = __temp as defaultquestchangelocationscript
 ;END AUTOCAST
 ;BEGIN CODE
 SetObjectiveCompleted(1800)
