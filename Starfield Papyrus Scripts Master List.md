@@ -4533,7 +4533,73 @@ Objects without registrations CANNOT receive magic effect apply events!
 ### Function: RegisterForMenuOpenCloseEvent (Native)
 `Function RegisterForMenuOpenCloseEvent(string asMenuName) native protected selfonly`
 
-Registers this alias to receive events when menus are opened / closed
+Registers this alias to receive events when menus are opened / closed (via the event `OnMenuOpenCloseEvent`)
+
+Known valid menu names:
+- `ArmorCraftingMenu`: spacesuit workbench
+- `BSMissionMenu`: player mission log
+- `BarterMenu`: buy/sell menu
+- `BookMenu`: reading a book
+- `BoundaryMenu`: when reaching the edge of the map
+- `ChargenMenu`: character customization (e.g. new game character customization, enhance!, etc)
+- `Console`: console interface
+- `ContainerMenu`: container menu (ship inventory, companion inventory, etc)
+- `CursorMenu`: fires when the cursor becomes visible/invisible
+- `DataMenu`: menu that shows up when looking at your character
+- `DataSlateMenu`: reading a data slate
+- `DialogueMenu`: fired when opening dialogue with an NPC
+- `DrugsCraftingMenu`: pharmaceutical lab
+- `FaderMenu`: fading in and out (out of data menu, between loading screens, in/out of scope mode, etc)
+- `FanfareMenu`: when player picks up something of note (skill magazine, legendaries, etc)
+- `FavoritesMenu`: favorites
+- `FoodCraftingMenu`: stove/galley/cooking station
+- `GalaxyStarMapMenu`: galaxy map
+- `GenesisTerminalMenu`: standard terminal interface
+- `HUDMenu`: when loading in (sometimes)
+- `HUDMessagesMenu`: when in game and loading a save
+- `IndustrialCraftingMenu`: industrial workbench
+- `InventoryMenu`: player's inventory
+- `LoadingMenu`: loading screen
+- `MessageBoxMenu`: fired when you open/close a message box (also armillary screen)
+- `MissionBoard`: mission board
+- `MonocleMenu`: scanner
+- `PauseMenu`: menu that pops up when you hit "escape" in game
+- `PhotoGalleryMenu`: photo gallery
+- `PhotoModeMenu`: photo mode
+- `PickpocketMenu`: shows when attempting to pickpocket
+- `PlayBinkMenu`: known firings: intro after touching artifact, walking into the Unity
+- `PowersMenu`: menu that shows the character's starborn powers
+- `ResearchMenu`: research lab
+- `ScopeMenu`: fires when entering/exiting scope mode (sniper rifle)
+- `SecurityMenu`: digipick interface
+- `ShipCrewMenu`: shown when looking at crew
+- `SitWaitMenu`: shows "wait" button when character sits down
+- `SkillsMenu`: menu that shows the character's skills
+- `SleepWaitMenu`: actual wait menu (activated by "wait" button when sitting or when interacting with a bed)
+- `SpaceshipEditorMenu`: spaceship editor menu (ship building, inspecting ship from data menu, purchase vehicle, purchase ship)
+- `SpaceshipHUDMenu`: fires when sitting in the pilot seat and the HUD appears
+- `StatusMenu`: menu that shows the character's status effects
+- `TakeoffMenu`: spaceship takeoff menu (shows when you're sitting in the pilot seat when on the ground or docked)
+- `TitleSequenceMenu`: opening sequence on vectera
+- `WeaponsCraftingMenu`: weapon workbench
+- `WorkshopMenu`: decorating
+
+The following menu names, while technically valid in that they don't cause an error to show in the Papryrus log, can't seem to be caught in game.
+- `ConsoleNativeUIMenu`
+- `CreditsMenu`
+- `DocAcceptMenu`
+- `EndGameCreditsMenu`
+- `MainMenu`
+- `MarketplaceMenu`
+- `ShipRefuelMenu`
+- `StreamingInstallMenu`
+- `TestMenu`
+- `TextInputMenu`
+- `WeaponGroupAssignmentMenu`
+- `WorkshopBuilderMenu`
+- `WorkshopQuickMenu`
+- `WorkshopTargetMenu`
+- `Workshop_BlueprintMenu`
 
 ([TOC](#table-of-contents))
 
