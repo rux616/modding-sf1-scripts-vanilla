@@ -2730,6 +2730,26 @@ Function StarbornAdversaryCheckForStateChange()
 							StarbornData[CONST_Adversary_DataIndex].StarbornDuplicatesCollection.RemoveRef(adversaryToRemove)
 							adversaryRefs.Remove(i)
 							adversaryRefsCurrentHealth.Remove(i)
+
+							;After removing this adversary, if all of the remaining adversaries are now inaccessible,
+							;and we can find a distortion to point our objective to, do so.
+							bool allInaccessible = True
+							int j = 0
+							While ((j < adversaryRefs.Length) && allInaccessible)
+								allInaccessible = adversaryRefs[j].HasKeyword(LC165_StarbornAdversaryInaccessibleKeyword)
+								j = j + 1
+							EndWhile
+							if (allInaccessible)
+								ObjectReference[] currentHoldPositionMarkers = AdversaryBattleStageData[adversaryBattleStageDataIndex].HoldPositionMarkers.GetArray()
+								if ((currentHoldPositionMarkers != None) && (currentHoldPositionMarkers.Length >= 1))
+									ObjectReference currentDistortion = currentHoldPositionMarkers[0].GetLinkedRef(LinkCustom01)
+									if (currentDistortion != None)
+										Debug.Trace("Set distortion.")
+										StarbornAdversary_ActiveDistortion.ForceRefTo(currentDistortion)
+									EndIf
+								EndIf
+							EndIf
+
 							i = i - 1
 						EndIf
 					EndIf

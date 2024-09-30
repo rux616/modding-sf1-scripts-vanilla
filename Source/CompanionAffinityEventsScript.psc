@@ -411,7 +411,7 @@ Event ReferenceAlias.OnLocationChange(ReferenceAlias akSender, Location akOldLoc
 		SpaceshipReference shipRef = akSender.GetReference().GetCurrentShipRef()
 		if shipRef && shipRef.HasKeyword(BEHostileBoardingEncounterKeyword)
 			SendAffinityEvent(COM_Event_Action_ShipBoardingOther)
-		elseif shipRef
+		elseif shipRef == PlayerShip.GetShipRef()
 			SendAffinityEvent(COM_Event_Action_ShipEmbark)
 		elseif akNewLoc.IsChild(akOldLoc) == false ;ignore leaving a child location into a parent location, assuming player got the line already when entering the parent location earlier
 			;try to determine if we've just far traveled or grav jumped to get here - SQ_Companions_RecentlyDisembarked == 1 means recently disembarked

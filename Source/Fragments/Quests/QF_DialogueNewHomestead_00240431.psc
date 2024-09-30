@@ -190,6 +190,17 @@ Game.GetPlayer().RemoveItem(Credits, NH_AdrianCredits.GetValue() as Int)
 EndFunction
 ;END FRAGMENT
 
+;BEGIN FRAGMENT Fragment_Stage_5000_Item_00
+Function Fragment_Stage_5000_Item_00()
+;BEGIN CODE
+FFNewHomesteadR04MiscQuestStartKeyword.SendStoryEventAndWait()
+If GetStageDone(411) || GetStageDone(402) || GetStageDone(413)
+   FFNewHomesteadR04QuestStartKeyword.SendStoryEventAndWait()
+EndIf
+;END CODE
+EndFunction
+;END FRAGMENT
+
 ;END FRAGMENT CODE - Do not edit anything between this and the begin comment
 
 Scene Property DialogueNewHomestead_EstablishingScene01 Auto Const Mandatory

@@ -34,6 +34,7 @@ Group AutofillProperties
 	ActorValue property DockingPermission Auto Const Mandatory
 	ActorValue property ShieldHealth Auto Const Mandatory
 	ActorValue property ShipSystemShieldsHealth Auto Const Mandatory
+	ActorValue property LC088_Vigilance_TravelToTargetLinkValue Auto Const Mandatory
 	FormList property LC088_Space_QuickstartCrewList Auto Const Mandatory
 	ObjectReference property VigilanceMarkerRef Auto Const Mandatory
 	ObjectReference property scDebugStartOriginMarker Auto Const Mandatory
@@ -170,11 +171,7 @@ Function Private_UpdateVigilanceLocation() RequiresGuard(LocationDataGuard)
 		currentTrafficManagerMarker = newDatum.TrafficManagerMarker.GetRef()
 		currentStageToSet = newDatum.StageToSet
 		;Move the Vigilance.
-		VigilanceShipRef.Disable()
-		VigilanceShipRef.SetLinkedRef(currentMoveToMarkerRef, LC082_VigilanceTravelTargetKeyword)
-		VigilanceShipRef.MoveTo(currentMoveToMarkerRef)
-		VigilanceShipRef.EvaluatePackage(true) ;true to reset the AI and make the package aware of the new destination
-		VigilanceShipRef.Enable()
+		MoveVigilanceToExpectedLocation()
 		;Move the Vigilance Marker, used for testing, to the map marker heading ref.
 		ObjectReference mapMarkerHeadingRef = newDatum.MapMarker.GetRef().GetLinkedRef()
 		if (mapMarkerHeadingRef != None)
@@ -193,6 +190,20 @@ Function Private_UpdateVigilanceLocation() RequiresGuard(LocationDataGuard)
 		;Unregister, since we've finished the move.
 		UnregisterForRemoteEvent(Game.GetPlayer(), "OnLocationChange")
 	EndIf
+EndFunction
+
+Function Patch_MoveVigilanceToExpectedLocation()
+	if ((vigilanceShipRef.IsEnabled()) || (currentLocationName != "Shutdown"))
+		MoveVigilanceToExpectedLocation()
+	EndIf
+EndFunction
+
+Function MoveVigilanceToExpectedLocation()
+	VigilanceShipRef.Enable()
+	VigilanceShipRef.SetLinkedRef(currentMoveToMarkerRef, LC082_VigilanceTravelTargetKeyword)
+	VigilanceShipRef.SetValue(LC088_Vigilance_TravelToTargetLinkValue, 1 - VigilanceShipRef.GetValue(LC088_Vigilance_TravelToTargetLinkValue))
+	VigilanceShipRef.MoveTo(currentMoveToMarkerRef)
+	VigilanceShipRef.EvaluatePackage()
 EndFunction
 
 Event Actor.OnLocationChange(Actor akSource, Location akOldLoc, Location akNewLoc)

@@ -3,9 +3,9 @@ Scriptname Fragments:Quests:QF_RQ_Settlement_Convince_01_0038BAAC Extends Quest 
 
 ;BEGIN FRAGMENT Fragment_Stage_0000_Item_00
 Function Fragment_Stage_0000_Item_00()
-;BEGIN AUTOCAST TYPE rqscript
+;BEGIN AUTOCAST TYPE RQScript
 Quest __temp = self as Quest
-rqscript kmyQuest = __temp as rqscript
+RQScript kmyQuest = __temp as RQScript
 ;END AUTOCAST
 ;BEGIN CODE
 ; Set the group to start asking for help
@@ -13,6 +13,28 @@ kmyquest.SetDialogueAV_Hello_Stressed_PreAccept()
 
 ; Move the Target NPC to the correct furniture
 SetStage(25)
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_Stage_0020_Item_00
+Function Fragment_Stage_0020_Item_00()
+;BEGIN CODE
+ObjectReference TargetREF = Alias_TargetNPC.GetRef()
+ObjectReference MarkerREF = Alias_TargetMarker.GetRef()
+(TargetREF as Actor).EvaluatePackage()
+SetStage(22)
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_Stage_0021_Item_00
+Function Fragment_Stage_0021_Item_00()
+;BEGIN CODE
+ObjectReference TargetREF = Alias_TargetNPC.GetRef()
+ObjectReference MarkerREF = Alias_TargetMarker.GetRef()
+
+TargetREF.MoveTo(MarkerREF)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -34,9 +56,9 @@ EndFunction
 
 ;BEGIN FRAGMENT Fragment_Stage_0050_Item_00
 Function Fragment_Stage_0050_Item_00()
-;BEGIN AUTOCAST TYPE rqscript
+;BEGIN AUTOCAST TYPE RQScript
 Quest __temp = self as Quest
-rqscript kmyQuest = __temp as rqscript
+RQScript kmyQuest = __temp as RQScript
 ;END AUTOCAST
 ;BEGIN CODE
 ; Set the group to stop asking for help.
@@ -47,11 +69,14 @@ EndFunction
 
 ;BEGIN FRAGMENT Fragment_Stage_0100_Item_00
 Function Fragment_Stage_0100_Item_00()
-;BEGIN AUTOCAST TYPE rqscript
+;BEGIN AUTOCAST TYPE RQScript
 Quest __temp = self as Quest
-rqscript kmyQuest = __temp as rqscript
+RQScript kmyQuest = __temp as RQScript
 ;END AUTOCAST
 ;BEGIN CODE
+if GetStageDone(22)
+    SetStage(21)
+endif
 SetObjectiveDisplayed(100)
 
 kmyquest.SetDialogueAV_PrimaryObjectiveKnown()
@@ -84,9 +109,9 @@ EndFunction
 
 ;BEGIN FRAGMENT Fragment_Stage_0275_Item_00
 Function Fragment_Stage_0275_Item_00()
-;BEGIN AUTOCAST TYPE rqscript
+;BEGIN AUTOCAST TYPE RQScript
 Quest __temp = self as Quest
-rqscript kmyQuest = __temp as rqscript
+RQScript kmyQuest = __temp as RQScript
 ;END AUTOCAST
 ;BEGIN CODE
 If !GetStageDone(995)
@@ -112,9 +137,9 @@ EndFunction
 
 ;BEGIN FRAGMENT Fragment_Stage_0500_Item_00
 Function Fragment_Stage_0500_Item_00()
-;BEGIN AUTOCAST TYPE rqscript
+;BEGIN AUTOCAST TYPE RQScript
 Quest __temp = self as Quest
-rqscript kmyQuest = __temp as rqscript
+RQScript kmyQuest = __temp as RQScript
 ;END AUTOCAST
 ;BEGIN CODE
 SetObjectiveCompleted(300)
@@ -130,9 +155,9 @@ EndFunction
 
 ;BEGIN FRAGMENT Fragment_Stage_0800_Item_00
 Function Fragment_Stage_0800_Item_00()
-;BEGIN AUTOCAST TYPE rqscript
+;BEGIN AUTOCAST TYPE RQScript
 Quest __temp = self as Quest
-rqscript kmyQuest = __temp as rqscript
+RQScript kmyQuest = __temp as RQScript
 ;END AUTOCAST
 ;BEGIN CODE
 ; Set by OnDeath Script on the Quest Giver Alias.
@@ -169,9 +194,9 @@ EndFunction
 
 ;BEGIN FRAGMENT Fragment_Stage_0990_Item_00
 Function Fragment_Stage_0990_Item_00()
-;BEGIN AUTOCAST TYPE rqscript
+;BEGIN AUTOCAST TYPE RQScript
 Quest __temp = self as Quest
-rqscript kmyQuest = __temp as rqscript
+RQScript kmyQuest = __temp as RQScript
 ;END AUTOCAST
 ;BEGIN CODE
 ; If the player accepted the quest, it can be failed.
@@ -188,9 +213,9 @@ EndFunction
 
 ;BEGIN FRAGMENT Fragment_Stage_0995_Item_00
 Function Fragment_Stage_0995_Item_00()
-;BEGIN AUTOCAST TYPE rqscript
+;BEGIN AUTOCAST TYPE RQScript
 Quest __temp = self as Quest
-rqscript kmyQuest = __temp as rqscript
+RQScript kmyQuest = __temp as RQScript
 ;END AUTOCAST
 ;BEGIN CODE
 ; If the quest has not been failed, the quest can be completed.

@@ -35,20 +35,26 @@ EndEvent
 Auto State Waiting
 	Event OnActivate(ObjectReference akActivator)
 		GotoState("Busy")
-		if (blockedUntilAllCrewDead)
-			BE_Objective_SecureShipMessage.Show()
-		ElseIf (blockedUntilGravityRestored)
-			blockedUntilGravityRestored = False
-			owningBEQuest.SetShipGravity(1)
-		EndIf
-		if (blockedUntilAllCrewDead || blockedUntilGravityRestored)
-			GotoState("Waiting")
-		Else
+		if (owningBEQuest == None)
+			Debug.Trace("WARN: BEObjectiveBlockPilotSeatScript has no owning quest. Unblocking activation on the pilot seat as a failsafe.", 1)
+			GetRef().BlockActivation(False, False)
 			GotoState("Done")
-			ObjectReference myRef = GetRef()
-			myRef.BlockActivation(False, False)
-			UnregisterForCustomEvent(owningBEQuest, "BEAllCrewDead")
-			myRef.Activate(akActivator)
+		Else
+			if (blockedUntilAllCrewDead)
+				BE_Objective_SecureShipMessage.Show()
+			ElseIf (blockedUntilGravityRestored)
+				blockedUntilGravityRestored = False
+				owningBEQuest.SetShipGravity(1)
+			EndIf
+			if (blockedUntilAllCrewDead || blockedUntilGravityRestored)
+				GotoState("Waiting")
+			Else
+				GotoState("Done")
+				ObjectReference myRef = GetRef()
+				myRef.BlockActivation(False, False)
+				UnregisterForCustomEvent(owningBEQuest, "BEAllCrewDead")
+				myRef.Activate(akActivator)
+			EndIf
 		EndIf
 	EndEvent
 EndState

@@ -134,6 +134,7 @@ Group AutofillProperties
 	Perk property Skill_Piloting Auto Const Mandatory
 	Potion property ShipRepairKit Auto Const Mandatory
 	Formlist property LC088_Space_QuickstartCrewList Auto Const Mandatory
+	Location property MQUnityLocation Auto Const Mandatory
 	Message property LC088_Space_VigilanceShieldsImpenetrableMessage Auto Const Mandatory
 	MusicType property MUSGenesisCombatBoss_CF08SpaceBattle Auto Const Mandatory
 	Static property XMarkerHeading Auto Const Mandatory
@@ -363,6 +364,7 @@ Event OnQuestStarted()
 	GenericShipsAll.AddRefCollection(SD_Enemies_All)
 
 	;Register for player ship events.
+	RegisterForRemoteEvent(Game.GetPlayer(), "OnLocationChange")
 	RegisterForRemoteEvent(PlayerShip, "OnLocationChange")
 	RegisterForRemoteEvent(PlayerShip, "OnShipDock")
 	RegisterForRemoteEvent(PlayerShip, "OnShipUndock")
@@ -601,6 +603,23 @@ EndFunction
 ;------------------------------------
 ;Event Handling
 ;---------------
+
+Function Patch_RegisterForUnityChangeLocation()
+	RegisterForRemoteEvent(Game.GetPlayer(), "OnLocationChange")
+	if (Game.GetPlayer().GetCurrentLocation() == MQUnityLocation)
+		MUSGenesisCombatBoss_CF08SpaceBattle.Remove()
+	EndIf
+EndFunction
+
+Event Actor.OnLocationChange(Actor akSource, Location akOldLocation, Location akNewLocation)
+	if (Main_MusicOverrideActive)
+		if ((akNewLocation == MQUnityLocation) && (PlayerShip.GetRef().GetCurrentLocation() == KeySpaceCellLoc))
+			MUSGenesisCombatBoss_CF08SpaceBattle.Remove()
+		ElseIf ((akOldLocation == MQUnityLocation) && (PlayerShip.GetRef().GetCurrentLocation() == KeySpaceCellLoc))
+			MUSGenesisCombatBoss_CF08SpaceBattle.Add()
+		EndIf
+	EndIf
+EndEvent
 
 Event ReferenceAlias.OnLocationChange(ReferenceAlias akSource, Location akOldLocation, Location akNewLocation)
 	if ((GetStageDone(CONST_Stage_CF_Skip)) || (GetStageDone(CONST_Stage_SD_Skip)))

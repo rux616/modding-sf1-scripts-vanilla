@@ -112,6 +112,28 @@ Function Fragment_Stage_0090_Item_00()
 ;BEGIN CODE
 ; Shake the camera a lot - things are about to get real
 Game.ShakeCamera(afStrength = 0.85, afDuration = 2.0)
+
+;The Ashta needs to be enabled here, otherwise it will fade in
+Alias_AlphaAshta.GetReference().EnableNoWait()
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_Stage_0095_Item_00
+Function Fragment_Stage_0095_Item_00()
+;BEGIN CODE
+;Player left the area mid-quest. Get them out of ambush packages that is causing the blocker
+Alias_AlphaAshta.GetActorRef().EvaluatePackage()
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_Stage_0096_Item_00
+Function Fragment_Stage_0096_Item_00()
+;BEGIN CODE
+;Backup turn Ashta aggressive
+Alias_AlphaAshta.GetActorRef().StartCombat(Alias_Davis.GetRef())
+Alias_AlphaAshta.GetActorRef().SetValue(Aggression, 1)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -122,8 +144,14 @@ Function Fragment_Stage_0100_Item_00()
 SetObjectiveCompleted(30)
 SetObjectiveDisplayed(100)
 SetObjectiveDisplayed(110)
-Alias_AlphaAshta.GetReference().Enable()
-Alias_AlphaAshta.GetActorRef().StartCombat(Game.GetPlayer())
+Actor AshtaRef = Alias_AlphaAshta.GetActorRef()
+
+;Enable should happen at stage 90, but just in case old saves are in between states, check again
+if AshtaRef.IsDisabled()
+    AshtaRef.EnableNoWait()
+endif
+AshtaRef.SetValue(Aggression, 1)
+AshtaRef.StartCombat(Game.GetPlayer())
 
 ; Flag Davis as being unessential
 if ( !GetStageDone(35) )   ; Only if he didn't get premonition
@@ -222,3 +250,5 @@ ActorValue Property Ashta03_Foreknowledge_CompletedQuestAV Auto Const Mandatory
 Quest Property DialogueFCAkilaCity Auto Const Mandatory
 
 Message Property City_Akila_Ashta_03_BuildRewardMsg Auto Const Mandatory
+
+ActorValue Property Aggression Auto Const Mandatory

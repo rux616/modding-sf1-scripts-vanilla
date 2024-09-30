@@ -40,6 +40,7 @@ Group AutofillProperties
 	ReferenceAlias property Ops_ToftStartMarker Auto Const Mandatory
 
 	ReferenceAlias property Brig_Terminal Auto Const Mandatory
+	RefCollectionAlias property ActiveFollowers Auto Const Mandatory
 	RefCollectionAlias property Brig_GenericPrisoners Auto Const Mandatory
 	RefCollectionAlias property Brig_ReleasedPrisoners Auto Const Mandatory
 	RefCollectionAlias property Brig_Enemies Auto Const Mandatory
@@ -193,6 +194,7 @@ int CONST_Ops_RobotActivationDelay = 7 Const
 float CONST_Ops_MovementUpdateHealthLossPercent = 0.3 Const
 int CONST_Ops_MovementUpdateTime = 15 Const
 int CONST_Surrender_Stage = 1019 Const
+int CONST_StartBattle_Stage = 1020 Const
 int CONST_Complete_Stage = 1100 Const
 int CONST_Complete_StartNaevaScene_Stage = 1094 Const
 int CONST_Complete_Space_VigilanceCompleted_Stage = 193 Const
@@ -496,6 +498,35 @@ Event ObjectReference.OnTriggerEnter(ObjectReference akSource, ObjectReference a
     EndLockGuard
 EndEvent
 
+;Stop combat on all prisoners.
+Function Patch_StopPrematureTargeting()
+	if (!GetStageDone(1020))
+		kibweRef.RemoveFromFaction(UCSysDefFaction)
+		kibweRef.StopCombat()
+		toftRef.RemoveFromFaction(UCSysDefFaction)
+		toftRef.StopCombat()
+		Actor[] activeFollowerRefs = ActiveFollowers.GetArray() as Actor[]
+		int i = 0
+		While (i < activeFollowerRefs.Length)
+			Actor currentCombatTarget = activeFollowerRefs[i].GetCombatTarget()
+			if ((currentCombatTarget == kibweRef) || (currentCombatTarget == toftRef))
+				activeFollowerRefs[i].StopCombat()
+			EndIf
+			i = i + 1
+		EndWhile
+		Actor[] allPrisoners = Brig_ReleasedPrisoners.GetArray() as Actor[]
+		i = 0
+		While (i < allPrisoners.Length)
+			Actor currentCombatTarget = allPrisoners[i].GetCombatTarget()
+			if ((currentCombatTarget == kibweRef) || (currentCombatTarget == toftRef))
+				allPrisoners[i].StopCombat()
+			EndIf
+			i = i + 1
+		EndWhile
+	EndIf
+EndFunction
+
+;Clean up all prisoners.
 Function CleanupAllPrisoners()
 	CallFunctionNoWait("CleanupAllPrisonersAndWait", None)
 EndFunction
@@ -936,11 +967,13 @@ EndFunction
 
 ;Set up Kibwe and Toft for their pre-boss battle scene.
 Function Ops_SetupOps()
+	kibweRef.RemoveFromFaction(UCSysDefFaction)
 	kibweRef.SetGhost(True)
 	kibweRef.SetEssential(False)
 	kibweRef.MoveTo(Ops_KibweStartMarker.GetRef())
 	kibweRef.EvaluatePackage()
 
+	toftRef.RemoveFromFaction(UCSysDefFaction)
 	toftRef.SetGhost(True)
 	toftRef.SetEssential(False)
 	toftRef.MoveTo(Ops_ToftStartMarker.GetRef())
@@ -958,9 +991,11 @@ Function Ops_StartBattle()
 	MUSGenesisCombatBoss_Vigilance.Add()
 	;Kick off the combat.
 	SetNewHoldPositionTarget(kibweRef, kibweRef.GetLinkedRef(LC088_Ops_BossHoldPositionInitialMarkerKeyword))
+	kibweRef.AddToFaction(UCSysDefFaction)
 	kibweRef.SetGhost(False)
 	kibweRef.StartCombat(player)
 	SetNewHoldPositionTarget(toftRef, toftRef.GetLinkedRef(LC088_Ops_BossHoldPositionInitialMarkerKeyword))
+	toftRef.AddToFaction(UCSysDefFaction)
 	toftRef.SetGhost(False)
 	toftRef.StartCombat(player)
 	;Start the battle monitor timer.

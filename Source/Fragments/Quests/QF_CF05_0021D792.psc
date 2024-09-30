@@ -587,6 +587,41 @@ endif
 EndFunction
 ;END FRAGMENT
 
+;BEGIN FRAGMENT Fragment_Stage_0068_Item_00
+Function Fragment_Stage_0068_Item_00()
+;BEGIN CODE
+;Backup stage that moves Huan into position if she is late and more than 5 meters away from destination
+
+Actor HuanRef = Alias_CF05_Huan.GetActorRef()
+ObjectReference HuanFurnitureRef = Alias_CF05_CustomStanding.GetRef()
+ObjectReference CaptainMarkerRef = Alias_CF05_HuanMoveToShipMarker.GetRef()
+
+HuanFurnitureRef.EnableNoWait()
+HuanFurnitureRef.MoveTo(CaptainMarkerRef)
+
+HuanRef.MoveTo(CaptainMarkerRef)
+HuanRef.EvaluatePackage()
+HuanRef.SetCrimeFaction(CrimsonFleetFaction)
+HuanRef.RemoveFromFaction(CrimeFactionUC)
+HuanRef.RemovefromFaction(PlayerFriendFaction)
+HuanRef.RemoveFromFaction(NewAtlantisFaction)
+
+Alias_CF05_HuanCrew01.GetActorRef().RemoveFromFaction(PlayerFriendFaction)
+Alias_CF05_HuanCrew02.GetActorRef().RemoveFromFaction(PlayerFriendFaction)
+Alias_CF05_HuanCrew03.GetActorRef().RemoveFromFaction(PlayerFriendFaction)
+
+Actor PilotRef = Alias_CF05_HuanPilot.GetActorRef()
+ObjectReference CockpitRef = Alias_CF05_HuanCaptainChair.GetRef()
+
+if PilotRef.GetDistance(CockpitRef) > 5
+    PilotRef.MoveTo(CockpitRef)
+endif
+
+PilotRef.SetGhost(true)
+;END CODE
+EndFunction
+;END FRAGMENT
+
 ;BEGIN FRAGMENT Fragment_Stage_0070_Item_00
 Function Fragment_Stage_0070_Item_00()
 ;BEGIN CODE
