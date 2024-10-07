@@ -1,1 +1,0 @@
-starfield_papyrus_scripts_master_list.md
