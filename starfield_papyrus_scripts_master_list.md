@@ -1,6 +1,6 @@
 # Starfield Papyrus Scripts Master List
 
-Starfield v1.13.61.0
+Starfield v1.14.70.0
 
 ## Table Of Contents
 - [Starfield Papyrus Scripts Master List](#starfield-papyrus-scripts-master-list)
