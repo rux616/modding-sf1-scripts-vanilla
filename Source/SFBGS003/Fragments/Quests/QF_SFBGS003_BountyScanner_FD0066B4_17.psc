@@ -1,5 +1,5 @@
 ;BEGIN FRAGMENT CODE - Do not edit anything between this and the end comment
-Scriptname SFBGS003:Fragments:Quests:QF_SFBGS003_ScannerBountyQuestFrag00 Extends Quest Hidden Const
+Scriptname SFBGS003:Fragments:Quests:QF_SFBGS003_BountyScanner_FD0066B4_17 Extends Quest Hidden Const
 
 ;BEGIN FRAGMENT Fragment_Stage_0001_Item_00
 Function Fragment_Stage_0001_Item_00()

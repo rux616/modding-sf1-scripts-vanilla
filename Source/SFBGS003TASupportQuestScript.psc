@@ -8,6 +8,8 @@ GlobalVariable Property SFBGS003_Bounties_Alive_Total Mandatory Const Auto
 GlobalVariable Property SFBGS003_Bounties_Dead_Total Mandatory Const Auto
 GlobalVariable Property SFBGS003_Bounties_Total Mandatory Const Auto
 
+Quest Property SFBGS003_DialogueTAHQ Mandatory Const Auto
+
 ;Guards
 Guard SetBountyAliveDataGuard ProtectsFunctionLogic
 Guard SetBountyDeadDataGuard ProtectsFunctionLogic
@@ -44,5 +46,6 @@ Function SetBountyTotalGlobal()
     LockGuard SetBountyTotalDataGuard
         SFBGS003_Bounties_Total.SetValue(SFBGS003_Bounties_Alive_Total.GetValue() + SFBGS003_Bounties_Dead_Total.GetValue())
         UpdateCurrentInstanceGlobal(SFBGS003_Bounties_Total)
+        SFBGS003_DialogueTAHQ.UpdateCurrentInstanceGlobal(SFBGS003_Bounties_Total)
     EndLockGuard
 EndFunction

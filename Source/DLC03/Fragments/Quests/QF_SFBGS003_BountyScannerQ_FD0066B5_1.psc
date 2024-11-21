@@ -1,5 +1,5 @@
 ;BEGIN FRAGMENT CODE - Do not edit anything between this and the end comment
-Scriptname SFBGS003:Fragments:Quests:QF_SFBGS003_ScannerBountyQuestFrag00 Extends Quest Hidden Const
+Scriptname DLC03:Fragments:Quests:QF_SFBGS003_BountyScannerQ_FD0066B5_1 Extends Quest Hidden Const
 
 ;BEGIN FRAGMENT Fragment_Stage_0001_Item_00
 Function Fragment_Stage_0001_Item_00()
@@ -116,9 +116,9 @@ EndFunction
 
 ;BEGIN FRAGMENT Fragment_Stage_0425_Item_00
 Function Fragment_Stage_0425_Item_00()
-;BEGIN AUTOCAST TYPE SFBGS003_SQ_Bounty_QuestScript
+;BEGIN AUTOCAST TYPE sfbgs003_sq_bounty_questscript
 Quest __temp = self as Quest
-SFBGS003_SQ_Bounty_QuestScript kmyQuest = __temp as SFBGS003_SQ_Bounty_QuestScript
+sfbgs003_sq_bounty_questscript kmyQuest = __temp as sfbgs003_sq_bounty_questscript
 ;END AUTOCAST
 ;BEGIN CODE
 kmyQuest.NPCFlees()
@@ -136,9 +136,9 @@ EndFunction
 
 ;BEGIN FRAGMENT Fragment_Stage_0475_Item_00
 Function Fragment_Stage_0475_Item_00()
-;BEGIN AUTOCAST TYPE SFBGS003_SQ_Bounty_QuestScript
+;BEGIN AUTOCAST TYPE sfbgs003_sq_bounty_questscript
 Quest __temp = self as Quest
-SFBGS003_SQ_Bounty_QuestScript kmyQuest = __temp as SFBGS003_SQ_Bounty_QuestScript
+sfbgs003_sq_bounty_questscript kmyQuest = __temp as sfbgs003_sq_bounty_questscript
 ;END AUTOCAST
 ;BEGIN CODE
 kmyQuest.AttackPlayer()
@@ -162,9 +162,9 @@ EndFunction
 
 ;BEGIN FRAGMENT Fragment_Stage_0600_Item_00
 Function Fragment_Stage_0600_Item_00()
-;BEGIN AUTOCAST TYPE SFBGS003_SQ_Bounty_QuestScript
+;BEGIN AUTOCAST TYPE sfbgs003_sq_bounty_questscript
 Quest __temp = self as Quest
-SFBGS003_SQ_Bounty_QuestScript kmyQuest = __temp as SFBGS003_SQ_Bounty_QuestScript
+sfbgs003_sq_bounty_questscript kmyQuest = __temp as sfbgs003_sq_bounty_questscript
 ;END AUTOCAST
 ;BEGIN CODE
 kmyQuest.NPCSurrendered()
@@ -200,9 +200,9 @@ EndFunction
 
 ;BEGIN FRAGMENT Fragment_Stage_0800_Item_00
 Function Fragment_Stage_0800_Item_00()
-;BEGIN AUTOCAST TYPE SFBGS003_SQ_Bounty_QuestScript
+;BEGIN AUTOCAST TYPE sfbgs003_sq_bounty_questscript
 Quest __temp = self as Quest
-SFBGS003_SQ_Bounty_QuestScript kmyQuest = __temp as SFBGS003_SQ_Bounty_QuestScript
+sfbgs003_sq_bounty_questscript kmyQuest = __temp as sfbgs003_sq_bounty_questscript
 ;END AUTOCAST
 ;BEGIN CODE
 kmyQuest.RewardBountyCredits()

@@ -20,6 +20,8 @@ Group Bounty_Functionality
     {Autofill. Applied to the Bounty Target to force package evaluation.}
     Keyword Property SFBGS003_SQ_BGS003_Actor_Flee_Keyword Auto Const hidden
     {Autofill. Applied to the Bounty Target to force package evaluation.}
+    Keyword Property SFBGS003_SQ_BGS003_Actor_Fight_Keyword Auto Const hidden
+    {Autofill. Applied to the Bounty Target to force package evaluation.}
     ActorValue Property SFBGS003_SQ_Bounty_AmountAV auto mandatory hidden
     {Autofill. This value is set by the Bounty Alias script.}
     GlobalVariable property SFBGS003_BountyScanner_Timestamp auto hidden
@@ -213,6 +215,9 @@ Function AttackPlayer()
     BountyTargetREF.AddtoFaction(PlayerEnemyFaction)
     BountyTargetREF.SetEssential(False)
     BountyTargetREF.SetProtected(False)
+    
+    BountyTargetREF.RemoveKeyword(SFBGS003_SQ_BGS003_Actor_Surrendered_Keyword)    
+    BountyTargetREF.AddKeyword(SFBGS003_SQ_BGS003_Actor_Fight_Keyword)  
 
     ; Make the Bounty Target hostile
     BountyTargetREF.SetValue(Aggression, 1)
@@ -322,7 +327,6 @@ Function RewardBountyCredits()
         FinalBountyReward = (BountyTargetREF.GetValue(SFBGS003_SQ_Bounty_AmountAV) * PercentBountyRewarded) as Int
         Game.GetPlayer().AddItem(Credits, FinalBountyReward)
     EndIf 
-
     BountyTargetREF.SetValue(SFBGS003_BountyWantedAliveAV, 4.0)  ; Value used by Code to display Bounty Completed on UI. Bounty Completed. 
 EndFunction 
 

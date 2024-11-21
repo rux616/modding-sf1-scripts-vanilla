@@ -853,9 +853,13 @@ EndFunction
 ;BEGIN FRAGMENT Fragment_Stage_1825_Item_00
 Function Fragment_Stage_1825_Item_00()
 ;BEGIN CODE
+Actor myRoach = Alias_Roach.GetActorRef()
+myRoach.StopCombat()
+myRoach.MoveTo(Game.GetPlayer())
+
 SFTA00_1825_Roach_Junker.Start()
 Alias_JunkerShip.GetShipRef().SetEssential(False)
-Alias_Roach.GetActorRef().EvaluatePackage()
+myRoach.EvaluatePackage()
 ;END CODE
 EndFunction
 ;END FRAGMENT
