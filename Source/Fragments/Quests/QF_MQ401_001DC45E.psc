@@ -187,6 +187,33 @@ SamCoeREF.RemoveKeyword(COM_PreventStoryGateScenes)
 EndFunction
 ;END FRAGMENT
 
+;BEGIN FRAGMENT Fragment_Stage_0501_Item_00
+Function Fragment_Stage_0501_Item_00()
+;BEGIN CODE
+PlayerSkillsQuest.SetStage(701)
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_Stage_0502_Item_00
+Function Fragment_Stage_0502_Item_00()
+;BEGIN CODE
+PlayerSkillsQuest.SetStage(701)
+PlayerSkillsQuest.SetStage(702)
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_Stage_0503_Item_00
+Function Fragment_Stage_0503_Item_00()
+;BEGIN CODE
+PlayerSkillsQuest.SetStage(701)
+PlayerSkillsQuest.SetStage(702)
+PlayerSkillsQuest.SetStage(703)
+;END CODE
+EndFunction
+;END FRAGMENT
+
 ;END FRAGMENT CODE - Do not edit anything between this and the begin comment
 
 Scene Property MQ401_002_AfterFaceGen Auto Const Mandatory
@@ -236,3 +263,5 @@ Perk Property Trait_StarterHome Auto Const Mandatory
 Quest Property TraitKidStuff Auto Const Mandatory
 
 Quest Property TraitStarterHome Auto Const Mandatory
+
+Quest Property PlayerSkillsQuest Auto Const Mandatory

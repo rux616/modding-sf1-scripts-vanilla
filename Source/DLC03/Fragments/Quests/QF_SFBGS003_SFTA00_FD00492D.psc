@@ -72,7 +72,6 @@ SpaceshipReference myChopShopStation = Alias_ChopShopStation.GetShipRef()
 myChopShopStation.SetValue(DockingPermission, 0)
 
 myDecoyShip.InstantDock(myChopShopStation)
-
 myDockingMarker.SetFactionOwner(SFTA00_ChopShopStationFriendFaction)
 
 myPlayer.MoveTo(Alias_DecoyShipHannibalWaveMarker.GetRef())
@@ -291,6 +290,11 @@ Function Fragment_Stage_0500_Item_00()
 If !IsObjectiveCompleted(300)
 	SetObjectiveDisplayed(300, False)
 EndIf
+
+If IsObjectiveDisplayed(360)
+	SetObjectiveDisplayed(360, False)
+EndIf
+
 SetObjectiveCompleted(400)
 SetObjectiveDisplayed(500)
 
@@ -405,7 +409,8 @@ Function Fragment_Stage_0850_Item_00()
 SetObjectiveCompleted(810)
 SetObjectiveDisplayed(850)
 
-Alias_PlayerChopShopFriend.ForceRefTo(Game.GetPlayer())
+Actor myPlayer = Game.GetPlayer()
+Alias_PlayerChopShopFriend.ForceRefTo(myPlayer)
 
 SpaceshipReference myDecoyShip = Alias_DecoyShip.GetShipRef()
 myDecoyShip.AddtoFaction(SFTA00_ChopShopStationFaction)
@@ -920,7 +925,10 @@ EndIf
 If !IsObjectiveCompleted(1630)
 	SetObjectiveDisplayed(1630)
 EndIf
+
 SetObjectiveCompleted(1900)
+
+
 Stop()
 ;END CODE
 EndFunction

@@ -1,6 +1,6 @@
 # Starfield Papyrus Scripts Master List
 
-Starfield v1.14.78.0
+Starfield v1.15.216.0
 
 ## Table Of Contents
 - [Starfield Papyrus Scripts Master List](#starfield-papyrus-scripts-master-list)
@@ -1410,6 +1410,7 @@ Starfield v1.14.78.0
                 - [Function: Lock (Native)](#function-lock-native)
                 - [Function: MakeAliasedRefFromInventory (Native)](#function-makealiasedreffrominventory-native)
                 - [Function: MakeTransmitterRepeater (Native)](#function-maketransmitterrepeater-native)
+                - [Function: MatchOutpostName (Native)](#function-matchoutpostname-native)
                 - [Function: ModValue (Native)](#function-modvalue-native)
                 - [Function: ModValueTo](#function-modvalueto)
                 - [Function: MoveContainerContentToUnfilledContainers (Native)](#function-movecontainercontenttounfilledcontainers-native)
@@ -14409,6 +14410,13 @@ Take an object in this ref's inventory, make a ref to it, force it into an alias
 `Function MakeTransmitterRepeater(ObjectReference akTransmitterToRepeat, float afInnerRadius, float afOuterRadius, bool abUnlimitedRange = false) native`
 
 Make this object a radio transmitter which will repeat all transmissions sent by akTransmitterToRepeat.
+
+([TOC](#table-of-contents))
+
+##### Function: MatchOutpostName (Native)
+`Function MatchOutpostName(ObjectReference akNewNameObject) native`
+
+Match this object's outpost name (must be an outpost beacon) to the full display name of the passed in reference
 
 ([TOC](#table-of-contents))
 

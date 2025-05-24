@@ -24,11 +24,11 @@ EndGroup
 
 Actor BountyTargetREF
 
-Event OnLoad()
+Event OnAliasInit()
     BountyTargetREF = BountyTarget.GetActorRef() 
     ; Set NPC to "Unscanned"
     BountyTargetREF.SetValue(SFBGS003_SQ_Bounty_isScannedAV, 0)
-    RegisterForRemoteEvent(GetActorRef(), "OnScanned")
+    RegisterForRemoteEvent(BountyTargetREF, "OnScanned")
     SetBountyCrimes()
     Trace(Self, "Registered OnScanned event" )
 EndEvent 
@@ -36,15 +36,16 @@ EndEvent
 ; Sets the stage on the quest which is picked up by the QuestScript
 Event OnScanned()
     BountyTargetREF = BountyTarget.GetActorRef() 
+    If BountyTargetREF.GetValue(SFBGS003_SQ_Bounty_isScannedAV) < 1.0
+        ; AV used by HandScannerBountyTargetScannedDO for UI code.
+        BountyTargetREF.SetValue(SFBGS003_SQ_Bounty_isScannedAV, 1.0)
+        Trace(self, " SFBGS003_SQ_Bounty_isScannedAV set to " + BountyTargetREF.GetValue(SFBGS003_SQ_Bounty_isScannedAV))
 
-    ; AV used by HandScannerBountyTargetScannedDO for UI code.
-    BountyTargetREF.SetValue(SFBGS003_SQ_Bounty_isScannedAV, 1.0)
-    Trace(self, " SFBGS003_SQ_Bounty_isScannedAV set to " + BountyTargetREF.GetValue(SFBGS003_SQ_Bounty_isScannedAV))
-
-    ; QuestScript updates when this stage is set.
-    GetOwningQuest().SetStage(SetStageOnScanned)
-    UnregisterForRemoteEvent(GetActorRef(), "OnScanned")
-    Trace(self, " OnScanned() SetStage: " + SetStageOnScanned)
+        ; QuestScript updates when this stage is set.
+        GetOwningQuest().SetStage(SetStageOnScanned)
+        UnregisterForRemoteEvent(BountyTargetREF, "OnScanned")
+        Trace(self, " OnScanned() SetStage: " + SetStageOnScanned)
+    EndIf
 EndEvent
 
 ; Determine the distribution of uncommon and rare crimes.

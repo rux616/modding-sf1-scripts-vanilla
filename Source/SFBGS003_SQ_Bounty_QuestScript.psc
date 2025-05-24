@@ -71,7 +71,9 @@ EndGroup
 bool BountyTargetKilled = False     ; Used to determine Reward
 
 GlobalVariable property SFBGS003_Bounties_Total auto 
-Quest property SFBGS003_TrackersAllianceSupportQuest auto 
+Quest Property SFBGS003_TrackersAllianceSupportQuest auto 
+Bool Property AlwaysAlive = false Auto Const
+Bool Property AlwaysDead = false Auto Const
 
 Event OnQuestInit()
     int NextQuestChance = SFBGS003_Global_BountySpawnChance.GetValueInt()
@@ -143,7 +145,11 @@ Function SetBountyWantedAV()
     int NumBounties = SFBGS003_Bounties_Total.GetValue() as Int
 
     ; If Player hasn't completed 10 bounties, only offer Wanted: Dead or Alive bounties.
-    If NumBounties >= 10 
+    If AlwaysAlive == true
+        WantedBounty = 3
+    ElseIf AlwaysDead == true
+        WantedBounty = 2 
+    ElseIf NumBounties >= 10 
         WantedBounty = Utility.RandomInt(1,3)
     Else 
         WantedBounty = 1 

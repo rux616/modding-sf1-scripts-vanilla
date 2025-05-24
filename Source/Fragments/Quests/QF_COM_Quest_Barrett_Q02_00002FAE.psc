@@ -37,6 +37,18 @@ Stop()
 EndFunction
 ;END FRAGMENT
 
+;BEGIN FRAGMENT Fragment_Stage_50000_Item_00
+Function Fragment_Stage_50000_Item_00()
+;BEGIN AUTOCAST TYPE bq01_questscript
+Quest __temp = self as Quest
+bq01_questscript kmyQuest = __temp as bq01_questscript
+;END AUTOCAST
+;BEGIN CODE
+kmyQuest.CheckPlayerStatus()
+;END CODE
+EndFunction
+;END FRAGMENT
+
 ;BEGIN FRAGMENT Fragment_Stage_7401_Item_00
 Function Fragment_Stage_7401_Item_00()
 ;BEGIN CODE
@@ -227,12 +239,7 @@ Quest __temp = self as Quest
 bq01_questscript kmyQuest = __temp as bq01_questscript
 ;END AUTOCAST
 ;BEGIN CODE
-kmyquest.BQ01_Enablelayer = InputEnableLayer.Create()
-kmyquest.BQ01_Enablelayer.EnableFastTravel(false)
-kmyquest.BQ01_Enablelayer.EnableGravJump(false)
-kmyquest.BQ01_Enablelayer.EnableFarTravel(false)
-Alias_PlayerPilotSeat.RefillAlias()
-Alias_PlayerPilotSeat.GetRef().BlockActivation(true, true)
+kmyquest.LockPlayer()
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -589,8 +596,7 @@ Game.GetPlayer().SetValue(COM_Quest_Barrett_Q02_Complete_AV, 1)
 
 Alias_CollisionMarkers.DisableAll()
 
-kmyquest.BQ01_Enablelayer.Delete()
-Alias_PlayerPilotSeat.GetRef().BlockActivation(false, false)
+kmyquest.UnlockPlayer()
 
 If GetStageDone(275)
    SetStage(9100)
@@ -711,3 +717,7 @@ Armor[] Property BarrettSpacesuitForms Auto Const Mandatory
 GlobalVariable Property COM_BQ01_WaitToggle Auto Const Mandatory
 
 ReferenceAlias Property Alias_PlayerPilotSeat Auto Const Mandatory
+
+LocationAlias Property Alias_Location_TemplePlanet Auto Const Mandatory
+
+ReferenceAlias Property Alias_PlayerShip Auto Const Mandatory
