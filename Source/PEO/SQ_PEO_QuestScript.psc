@@ -50,21 +50,21 @@ Group Properties
     OptionDatum[] Property OptionData Mandatory Const Auto
     {used to set related Option and Global}
 
-    OptionAVDatum[] Property OptionAVData Mandatory Const Auto RequiresGuard(AVArrayGuard) 
+    OptionAVDatum[] Property OptionAVData Const Auto RequiresGuard(AVArrayGuard) 
     {use to set ActorValues based on PEO GlobalVariable Values}
 
-    OptionGlobalDatum[] Property OptionGlobalData Mandatory Const Auto RequiresGuard(GlobalArrayGuard) 
+    OptionGlobalDatum[] Property OptionGlobalData Const Auto RequiresGuard(GlobalArrayGuard) 
     {use to set GlobalVariables based on PEO GlobalVariable Values}
 
-    OptionSpellDatum[] Property OptionSpellData Mandatory Const Auto RequiresGuard(SpellArrayGuard) 
+    OptionSpellDatum[] Property OptionSpellData Const Auto RequiresGuard(SpellArrayGuard) 
     {use to refresh Spells based on changing gameplay options}
 
-    ActorValue Property PEO_XP_Mult Mandatory Const Auto RequiresGuard(XPMultGuard) 
+    ActorValue Property PEO_XP_Mult Const Auto RequiresGuard(XPMultGuard) 
     {autofill; an AV used by PEO_XP_Mult_Perk to scale player XP based on gameplay option settings}
 EndGroup
 
 Group RemapValues
-    GameplayOption Property PEO_GPO_EnvironmentalDamage Mandatory Const Auto
+    GameplayOption Property PEO_GPO_EnvironmentalDamage Const Auto
 EndGroup
 
 
@@ -346,15 +346,17 @@ EndFunction
 
 Function UpdateXPMult() private
     LockGuard XPMultGuard
-        float OptionRewardXPTotal ;stores the numeric total of all the player experience gameplay options. These can be negative values. 10 = 10%, -5 = -5%
+        If PEO_XP_Mult
+            float OptionRewardXPTotal ;stores the numeric total of all the player experience gameplay options. These can be negative values. 10 = 10%, -5 = -5%
 
-        OptionRewardXPTotal = GameplayOption.GetXPTotal()
-        Trace(self, "UpdateXPMult() OptionRewardXPTotal: " + OptionRewardXPTotal)
+            OptionRewardXPTotal = GameplayOption.GetXPTotal()
+            Trace(self, "UpdateXPMult() OptionRewardXPTotal: " + OptionRewardXPTotal)
 
-        float XPMult = 1 + (OptionRewardXPTotal * 0.01) ;this will modify a default 1.0 value actorvalue that will multiply EXP via perk entry. A total of 10 OptionRewardXPTotal becomes 1.10 to scale the incoming EXP.
-        Trace(self, "UpdateXPMult() XPMult: " + XPMult)
+            float XPMult = 1 + (OptionRewardXPTotal * 0.01) ;this will modify a default 1.0 value actorvalue that will multiply EXP via perk entry. A total of 10 OptionRewardXPTotal becomes 1.10 to scale the incoming EXP.
+            Trace(self, "UpdateXPMult() XPMult: " + XPMult)
 
-        Game.GetPlayer().SetValue(PEO_XP_Mult, XPMult)
+            Game.GetPlayer().SetValue(PEO_XP_Mult, XPMult)
+        EndIf
     EndLockGuard
 EndFunction
 

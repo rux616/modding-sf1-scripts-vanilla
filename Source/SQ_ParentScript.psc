@@ -221,7 +221,7 @@ group outpostAttacks
     Keyword property SQ_OutpostEventAttackCreatures auto const mandatory
     { used to trigger outpost attacks by creatures }
 
-	OutpostAttackSpecialCase[] property OutpostAttackSpecialCases auto Const
+	OutpostAttackSpecialCase[] property OutpostAttackSpecialCases auto
 	{ used to increase attack chance for special cases }
 endGroup
 

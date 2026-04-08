@@ -109,7 +109,8 @@ Event OnStageSet(int auiStageID, int auiItemID)
     Actor BountyTargetREF = BountyTargetAlias.GetActorRef()
 
     ; Enable the Bounty Target after initial setup. This stage is set by Alias Script setup.
-    If auiStageID == SetupCompleteStage
+    ; Ignore this step if we're attempting to stop the quest from the shutdown script
+    If auiStageID == SetupCompleteStage && !IsStopping()
         BountyTargetREF.Enable()
         SetStage(QuestReadyStage)
         

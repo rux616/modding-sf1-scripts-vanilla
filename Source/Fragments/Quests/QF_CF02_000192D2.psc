@@ -297,10 +297,12 @@ Function Fragment_Stage_0200_Item_00()
 SetObjectiveCompleted(100)
 SetObjectiveDisplayed(200)
 
-CF02_110_Naeva_HailScene.Start()
 SpaceshipReference NaevaShip = Alias_CF02_NaevaShip.GetShipRef()
 NaevaShip.SetValue(DockingPermission, 4)
 NaevaShip.SetGhost(true)
+
+Utility.Wait(3)
+CF02_110_Naeva_HailScene.Start()
 ;END CODE
 EndFunction
 ;END FRAGMENT

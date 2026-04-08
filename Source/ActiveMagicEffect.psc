@@ -666,3 +666,7 @@ EndEvent
 ; Event received when a ship initiates or completes undocking with a parent
 Event OnShipUndock(bool abComplete, SpaceshipReference akUndocking, SpaceshipReference akParent)
 EndEvent
+
+; Event that is triggered when a ship arrives in cruise mode
+Event OnShipCruiseArrival()
+EndEvent

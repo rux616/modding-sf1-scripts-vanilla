@@ -1703,7 +1703,7 @@ Function SetupComputers()
 		if (GenericComputersMax >= 0)
 			genericComputersToEnableCount = Math.Min(moduleData.Length * GenericComputersModulePercentChance, GenericComputersMax) as int
 		Else
-     		genericComputersToEnableCount = moduleData.Length * GenericComputersModulePercentChance as int
+     		genericComputersToEnableCount = Math.Round(moduleData.Length * GenericComputersModulePercentChance) as int
 		EndIf
 		if (genericComputersToEnableCount > computersToEnable.Length)
 			ModuleDatum[] randomizedModuleData = CopyAndRandomizeModuleDataArray(moduleData)

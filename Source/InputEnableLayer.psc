@@ -27,6 +27,9 @@ Function EnableCamSwitch(bool abEnable = true) Native
 ; Enables/disables the player's ability to far travel in a spaceship
 Function EnableFarTravel(bool abEnable = true) Native
 
+; Enables/disables the player's ability to cruise in a spaceship
+Function EnableCruiseMode(bool abEnable = true) Native
+
 ; Enables/disables the player's ability to fast travel
 Function EnableFastTravel(bool abEnable = true) Native
 
@@ -66,6 +69,9 @@ Function EnableRunning(bool abEnable = true) Native
 ; Enables/disables the player's ability to sprint
 Function EnableSprinting(bool abEnable = true) Native
 
+; Enables/disables cruise mode dependency on far travel
+Function SetCruiseModeRequiresFarTravel(bool abEnable = true) Native
+
 ; Enables/disables the player's ability to z-key
 Function EnableZKey(bool abEnable = true) Native
 
@@ -93,6 +99,9 @@ bool Function IsCamSwitchEnabled() Native
 
 ; Returns whether far travel is enabled on this layer
 bool Function IsFarTravelEnabled() Native
+
+; Returns whether cruise mode is enabled on this layer
+bool Function IsCruiseModeEnabled() Native
 
 ; Returns whether fast travel is enabled on this layer
 bool Function IsFastTravelEnabled() Native
@@ -132,6 +141,9 @@ bool Function IsRunningEnabled() Native
 
 ; Returns whether sprinting is enabled on this layer
 bool Function IsSprintingEnabled() Native
+
+; Returns whether cruise mode is dependent on far travel on this layer
+bool Function CruiseModeRequiresFarTravel() Native
 
 ; Returns whether z-key is enabled on this layer
 bool Function IsZKeyEnabled() Native

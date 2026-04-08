@@ -596,6 +596,7 @@ EndFunction
 ;Register for LoadingMenu events, which we use to control scene timings.
 Function RegisterForLoadScreenEvent()
 	RegisterForMenuOpenCloseEvent("LoadingMenu")
+	RegisterForRemoteEvent(PlayerShip, "OnShipCruiseArrival")
 EndFunction
 
 
@@ -645,34 +646,46 @@ EndEvent
 
 Event OnMenuOpenCloseEvent(string asMenuName, bool abOpening)
 	if (!abOpening)
-		Location currentLocation = PlayerShip.GetRef().GetCurrentLocation()
-		if (GetStageDone(CONST_Stage_CF_PlayerSidesWithCF))
-			if (currentLocation == DBAlphaSpaceCellLoc)
-				SetStage(CONST_Stage_CF_StartAlpha)
-			ElseIf (currentLocation == DBBetaSpaceCellLoc)
-				SetStage(CONST_Stage_CF_StartBeta)
-			ElseIf (currentLocation == DBGammaSpaceCellLoc)
-				SetStage(CONST_Stage_CF_StartGamma)
-			ElseIf ((currentLocation == KeySpaceCellLoc) && (GetStageDone(CONST_Stage_CF_MainReady)))
-				CleanupCF05JadeSwan()
-				SetStage(CONST_Stage_CF_StartMain)
-				UnregisterForMenuOpenCloseEvent("LoadingMenu")
-			EndIf
-		Else ;CONST_Stage_SD_PlayerSidesWithSD
-			if (currentLocation == DBAlphaSpaceCellLoc)
-				SetStage(CONST_Stage_SD_StartAlpha)
-			ElseIf (currentLocation == DBBetaSpaceCellLoc)
-				SetStage(CONST_Stage_SD_StartBeta)
-			ElseIf (currentLocation == DBGammaSpaceCellLoc)
-				SetStage(CONST_Stage_SD_StartGamma)
-			ElseIf (currentLocation == KeySpaceCellLoc)
-				CleanupCF05JadeSwan()
-				SetStage(CONST_Stage_SD_StartMain)
-				UnregisterForMenuOpenCloseEvent("LoadingMenu")
-			EndIf
-		EndIf
+		RunShipArrivalFunction()
 	EndIf
 EndEvent
+
+Event ReferenceAlias.OnShipCruiseArrival(ReferenceAlias akSource)
+	if akSource == PlayerShip
+		RunShipArrivalFunction()
+	endif
+EndEvent
+
+Function RunShipArrivalFunction()
+	Location currentLocation = PlayerShip.GetRef().GetCurrentLocation()
+	if (GetStageDone(CONST_Stage_CF_PlayerSidesWithCF))
+		if (currentLocation == DBAlphaSpaceCellLoc)
+			SetStage(CONST_Stage_CF_StartAlpha)
+		ElseIf (currentLocation == DBBetaSpaceCellLoc)
+			SetStage(CONST_Stage_CF_StartBeta)
+		ElseIf (currentLocation == DBGammaSpaceCellLoc)
+			SetStage(CONST_Stage_CF_StartGamma)
+		ElseIf ((currentLocation == KeySpaceCellLoc) && (GetStageDone(CONST_Stage_CF_MainReady)))
+			CleanupCF05JadeSwan()
+			SetStage(CONST_Stage_CF_StartMain)
+			UnregisterForMenuOpenCloseEvent("LoadingMenu")
+			UnregisterForRemoteEvent(PlayerShip, "OnShipCruiseArrival")
+		EndIf
+	Else ;CONST_Stage_SD_PlayerSidesWithSD
+		if (currentLocation == DBAlphaSpaceCellLoc)
+			SetStage(CONST_Stage_SD_StartAlpha)
+		ElseIf (currentLocation == DBBetaSpaceCellLoc)
+			SetStage(CONST_Stage_SD_StartBeta)
+		ElseIf (currentLocation == DBGammaSpaceCellLoc)
+			SetStage(CONST_Stage_SD_StartGamma)
+		ElseIf (currentLocation == KeySpaceCellLoc)
+			CleanupCF05JadeSwan()
+			SetStage(CONST_Stage_SD_StartMain)
+			UnregisterForMenuOpenCloseEvent("LoadingMenu")
+			UnregisterForRemoteEvent(PlayerShip, "OnShipCruiseArrival")
+		EndIf
+	EndIf
+EndFunction
 
 Event OnTimer(int timerID)
 	if (timerID == CONST_VigilanceInvulnerableSceneTimerID)

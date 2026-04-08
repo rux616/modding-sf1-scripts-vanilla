@@ -32,6 +32,7 @@ Function RegisterTrackedStats()
     while i < StatsAchievements.Length
         StatsAchievement theStatAchievement = StatsAchievements[i]
         RegisterForTrackedStatsEvent(theStatAchievement.statString, theStatAchievement.statCount)
+        debug.trace(self + "Tracked Stat Event Registered: " + theStatAchievement.statString)
         i += 1
     EndWhile
 
@@ -40,24 +41,32 @@ Function RegisterTrackedStats()
     ; Add all achievement challenges:
     int index = 0
     while (index < ChallengeAchievements.Length)
-		ChallengeAchievements[index].AchievementChallenge.StartPlayerChallenge()
-		index += 1
+        if(ChallengeAchievements[index].AchievementChallenge != None)
+		    ChallengeAchievements[index].AchievementChallenge.StartPlayerChallenge()
+        EndIf
+         index += 1
 	endWhile
 
 endFunction
 
 Event OnTrackedStatsEvent(string asStatFilter, int aiStatValue)
+    debug.trace(self + "OnTrackedStatsEvent: " + asStatFilter  + " Value: "+ aiStatValue)
     int statsAchievementsIndex = StatsAchievements.FindStruct("statString", asStatFilter, 0)
     while ( statsAchievementsIndex > -1 ) 
         StatsAchievement theStatAchievement = StatsAchievements[statsAchievementsIndex]
 
         ; Check that the found stat achievement's target value matches the value of the stat event
         if(theStatAchievement.statCount <= aiStatValue)
+            debug.trace(self + "Achievement Added: " + theStatAchievement.AchievementNumber)
             Game.AddAchievement(theStatAchievement.AchievementNumber)
         EndIf
 
         ; Check past this index in case another achievement is based on this same stat
-        statsAchievementsIndex = StatsAchievements.FindStruct("statString", asStatFilter, statsAchievementsIndex + 1)     
+        if(statsAchievementsIndex + 1 >= StatsAchievements.Length)
+            statsAchievementsIndex = -999
+        Else
+            statsAchievementsIndex = StatsAchievements.FindStruct("statString", asStatFilter, statsAchievementsIndex + 1)
+        EndIf
     EndWhile
 endEvent
 

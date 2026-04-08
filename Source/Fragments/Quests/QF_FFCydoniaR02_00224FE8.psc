@@ -38,6 +38,15 @@ SetObjectiveDisplayed(300)
 EndFunction
 ;END FRAGMENT
 
+;BEGIN FRAGMENT Fragment_Stage_0400_Item_00
+Function Fragment_Stage_0400_Item_00()
+;BEGIN CODE
+SetObjectiveCompleted(300)
+SetObjectiveDisplayed(400)
+;END CODE
+EndFunction
+;END FRAGMENT
+
 ;BEGIN FRAGMENT Fragment_Stage_1000_Item_00
 Function Fragment_Stage_1000_Item_00()
 ;BEGIN CODE

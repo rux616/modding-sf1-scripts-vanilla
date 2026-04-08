@@ -7,6 +7,9 @@ group SE_Properties
 	LocationAlias property OrbitLocation auto const Mandatory
 	{ orbit location for this SE }
 
+	bool Property UseCruisePOILifespanTimer = true Auto
+	{If you want this script to handle automatically removing SEs from Free Lanes}
+
 	bool Property StopQuestWhenPlayerLeavesSystem = True auto
 	{Default = true, once player leaves system, quest should stop }
 
@@ -46,17 +49,23 @@ group SE_Properties
 	bool Property setCooldownOnShutdown = false Const Auto
 	{if true, will set cooldown timer on quest stoppage. For Player encounters where change location cooldown is invalid}
 
+	float property CheckDistance = 50000.0 auto Const
+	{ Used to check if the player's ship is actually at the current space encounter, distance from the player to the map marker }
+
 endGroup
 
-int GlobalHailTimerID = 1
-int FallbackHailTimerID = 2
-
+int GlobalHailTimerID = 1 Const
+int FallbackHailTimerID = 2 Const
+int CruisePOILifespanTimerID = 10 Const
+int CruisePOILifespanTimer = 150 ;default value
+bool isCruiseModeQuest = false
 
 Event OnQuestStarted()
 	debug.trace(self + "OnQuestStarted: registering for OnLocationChange event for " + PlayerShip.GetRef())
 	if LocationShutdownOnExit || StopQuestWhenPlayerLeavesSystem || UseGlobalHailTimer
 		RegisterForRemoteEvent(PlayerShip, "OnLocationChange")
 		RegisterForRemoteEvent(PlayerShip, "OnShipGravJump")
+		RegisterForRemoteEvent(PlayerShip, "OnShipCruiseArrival")
 	endif
 	; we don't care about OnStoryScript event
 	bFinishedOnStoryEvent = true
@@ -71,6 +80,21 @@ Event OnQuestStarted()
 	EndIf
 
     Parent.OnQuestStarted()
+EndEvent
+
+Event OnStoryChangeLocationEx(ObjectReference akActor, Location akOldLocation, Location akNewLocation, bool abIsSpaceCruiseEvent)
+	Debug.Trace(akActor + " moved from " + akOldLocation + " to " + akNewLocation + " was from cruise mode " + abIsSpaceCruiseEvent)
+	Debug.Trace(self + " CRUISE MODE - OnStoryChangeLocationEvent registered!")
+
+	if abIsSpaceCruiseEvent == true
+		;Check that this SE came from the Free Lanes Story Manager nodes
+		isCruiseModeQuest = true
+		if UseCruisePOILifespanTimer
+			;check that this SE is flagged to use the Cruise Mode lifespan timer (default == true)
+			debug.trace(self + " OnStoryChangeLocation: Starting CruisePOILifespanTimer...")
+			StartSECruiseLifespanTimer()
+		endif	
+	endif
 EndEvent
 
 ; OVERRIDE parent - we don't have a trigger to set
@@ -92,8 +116,7 @@ Event ReferenceAlias.OnLocationChange(ReferenceAlias akSender, Location akOldLoc
 	endif
 
 	if SetStageOnInSameLocation
-		Location orbitLoc = OrbitLocation.GetLocation()
-		if akNewLoc == orbitLoc || orbitLoc.IsChild(akNewLoc)
+		if CheckLocation()
 			SetStage(stageToSetOnInSameLocation)
 		endif
 	EndIf
@@ -117,7 +140,7 @@ Event ReferenceAlias.OnLocationChange(ReferenceAlias akSender, Location akOldLoc
 	if shouldShutdown == false && StopQuestWhenPlayerLeavesSystem
 		; has player left system?
 		Location myOrbitLocation = OrbitLocation.GetLocation()
-		if myOrbitLocation && akNewLoc && myOrbitLocation.HasCommonParent(akNewLoc, RE_Parent.LocTypeStarSystem) == false
+		if myOrbitLocation && akNewLoc && myOrbitLocation.HasCommonParent(akNewLoc, RE_Parent.LocTypeStarSystem) == false && akNewLoc.IsChild(myOrbitLocation) == false && myOrbitLocation.IsChild(akNewLoc) == false && myOrbitLocation != akNewLoc
 			; player is in different system - shut down
 			debug.trace(self + " OnLocationChange: player not in same system as " + myOrbitLocation + ": calling shutdown")
 			shouldShutdown = true
@@ -132,6 +155,7 @@ Event ReferenceAlias.OnLocationChange(ReferenceAlias akSender, Location akOldLoc
 	if CheckLocation() && UseGlobalHailTimer
 		;run again on location change for POI SEs
 		RegisterForMenuOpenCloseEvent("FaderMenu")
+		RegisterForRemoteEvent(PlayerShip, "OnShipCruiseArrival")
 		StartFallbackHailTimer()
 	EndIf
 EndEvent
@@ -197,7 +221,15 @@ EndFunction
 bool Function CheckLocation()
 
 	Location orbitLoc = OrbitLocation.GetLocation()
-	if Playership.GetRef().IsinLocation(orbitLoc) 
+
+	Debug.Trace(self + "CheckLocation: Player location: " + PlayerShip.GetRef().GetCurrentLocation() + " - Quest location: " + orbitLoc + "Is cruise mode quest = " + isCruiseModeQuest)
+
+	if isCruiseModeQuest == false && Playership.GetRef().IsinLocation(orbitLoc)
+		Return true
+	elseIf isCruiseModeQuest && MapMarker == None && Playership.GetRef().IsinLocation(orbitLoc)
+		Return true
+	elseIf isCruiseModeQuest && Playership.GetRef().IsinLocation(orbitLoc) && MapMarker != None && PlayerShip.GetRef().GetDistance(MapMarker.GetRef()) <= CheckDistance
+		Debug.Trace(self + "Distance from player ship to map marker:" + PlayerShip.GetRef().GetDistance(MapMarker.GetRef()))
 		Return true
 	else
 		Return false
@@ -210,10 +242,23 @@ Event OnMenuOpenCloseEvent(string asMenuName, bool abOpening)
         if (!abOpening)
 	    	Debug.Trace("Loading menu is closed!")
 			StartGlobalHailTimer()
-			UnRegisterForMenuOpenCloseEvent("FaderMenu")
+			UnregisterForMenuOpenCloseEvent("FaderMenu")
+			UnregisterForRemoteEvent(PlayerShip, "OnShipCruiseArrival")
         endif
     endif
 
+EndEvent
+
+Event ReferenceAlias.OnShipCruiseArrival(ReferenceAlias akSource)
+	if akSource == PlayerShip && CheckLocation()
+	   	Debug.Trace("Arrived out of Cruise mode")
+		;we've visited this location in cruise mode, so it shouldn't shut down from the CruisePOILifespanTimer now
+		UseCruisePOILifespanTimer = false
+		CancelTimer(CruisePOILifespanTimerID)
+		StartGlobalHailTimer()
+		UnregisterForRemoteEvent(PlayerShip, "OnShipCruiseArrival")
+		UnregisterForMenuOpenCloseEvent("FaderMenu")
+	endif
 EndEvent
 
 Function StartGlobalHailTimer()
@@ -223,6 +268,7 @@ Function StartGlobalHailTimer()
 
 EndFunction
 
+
 Function StartFallbackHailTimer()
 
 	;fallback timer in the event that we miss the fade up
@@ -230,12 +276,31 @@ Function StartFallbackHailTimer()
 
 EndFunction
 
+;Cruise SE Lifespan Timer Func
+Function StartSECruiseLifespanTimer()
+	;Start Cruise Mode lifespan timer countdown
+	StartTimer(CruisePOILifespanTimer, CruisePOILifespanTimerID)	
+EndFunction
+
 Event OnTimer(int aiTimerID)		
   If (aiTimerID == GlobalHailTimerID  || aiTimerID == FallbackHailTimerID)
 	if (GetStageDone(HailingDoneStage) == false && CheckLocation())
 		SetStage(HailingStage)
-		UnRegisterForMenuOpenCloseEvent("FaderMenu")
+		UnregisterForMenuOpenCloseEvent("FaderMenu")
+		UnregisterForRemoteEvent(PlayerShip, "OnShipCruiseArrival")
 	endif
+  EndIf
+
+  If aiTimerID == CruisePOILifespanTimerID && !MapMarker.GetRef().Is3DLoaded()
+		;Cruise Mode SE Lifespan timer check - if player is not playing the SE and lifespan timer ends, shutdown.
+		debug.trace(self + " CRUISE - CruisePOILifespanTimer ended, stopping Quest")
+		Shutdown()
+  EndIf
+
+  If aiTimerID == CruisePOILifespanTimerID && MapMarker.GetRef().Is3DLoaded()
+        ;Timer ended but the player has arrived at the SE and 3DLoaded the marker, so don't shutdown and cacncel the timer.
+		debug.trace(self + " CRUISE - CruisePOILifespanTimer cancelling because player entered SE location")
+        CancelTimer(CruisePOILifespanTimerID)
   EndIf
 EndEvent
 

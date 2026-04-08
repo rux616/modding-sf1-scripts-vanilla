@@ -3,8 +3,8 @@ Scriptname Fragments:Scenes:SF_MQ302_225_ElevatorScene02_0013419A Extends Scene 
 
 ;BEGIN FRAGMENT Fragment_Begin
 Function Fragment_Begin()
-;BEGIN AUTOCAST TYPE LC165QuestScript
-LC165QuestScript kmyQuest = GetOwningQuest() as LC165QuestScript
+;BEGIN AUTOCAST TYPE lc165questscript
+lc165questscript kmyQuest = GetOwningQuest() as lc165questscript
 ;END AUTOCAST
 ;BEGIN CODE
 ;Lock player movement for the elevator scene.
@@ -15,8 +15,8 @@ EndFunction
 
 ;BEGIN FRAGMENT Fragment_End
 Function Fragment_End()
-;BEGIN AUTOCAST TYPE LC165QuestScript
-LC165QuestScript kmyQuest = GetOwningQuest() as LC165QuestScript
+;BEGIN AUTOCAST TYPE lc165questscript
+lc165questscript kmyQuest = GetOwningQuest() as lc165questscript
 ;END AUTOCAST
 ;BEGIN CODE
 ;Unlock player movement.
@@ -27,10 +27,10 @@ kMyQuest.SetPlayerControlsEnabled(True)
 EndFunction
 ;END FRAGMENT
 
-;BEGIN FRAGMENT Fragment_Phase_01_End
-Function Fragment_Phase_01_End()
-;BEGIN AUTOCAST TYPE LC165QuestScript
-LC165QuestScript kmyQuest = GetOwningQuest() as LC165QuestScript
+;BEGIN FRAGMENT Fragment_Phase_02_End
+Function Fragment_Phase_02_End()
+;BEGIN AUTOCAST TYPE lc165questscript
+lc165questscript kmyQuest = GetOwningQuest() as lc165questscript
 ;END AUTOCAST
 ;BEGIN CODE
 Actor allyRef = kMyQuest.Ally.GetActorRef()
@@ -46,10 +46,10 @@ EndIf
 EndFunction
 ;END FRAGMENT
 
-;BEGIN FRAGMENT Fragment_Phase_03_End
-Function Fragment_Phase_03_End()
-;BEGIN AUTOCAST TYPE LC165QuestScript
-LC165QuestScript kmyQuest = GetOwningQuest() as LC165QuestScript
+;BEGIN FRAGMENT Fragment_Phase_04_End
+Function Fragment_Phase_04_End()
+;BEGIN AUTOCAST TYPE lc165questscript
+lc165questscript kmyQuest = GetOwningQuest() as lc165questscript
 ;END AUTOCAST
 ;BEGIN CODE
 ;Send the elevator down.

@@ -1,18 +1,34 @@
 # Starfield Scripts
-Contains the script sources for vanilla Starfield. Intended to be used as a submodule. Tags are in the format `<Identifier_Name>-v<Version>-<SteamBuildID>`.
 
-Starfield Creation Kit v1.15.222.0, Steam Build ID 19490141 (for Starfield v1.15.222.0, Steam Build ID 19278288)
+Contains the script sources for vanilla Starfield. Intended to be used as a git submodule.
 
-Also contains the Papyrus compiler files:
+Tags are in the format `<Identifier_Name>-v<Version>-<SteamBuildID>`, where `<Identifier_Name>` is one of either "CreationKit" or "Starfield", `<Version>` matches the format BGS uses (currently "A.B.C.D" format with `A`, `B`, `C`, and `D` being non-negative base-10 numbers), and `<SteamBuildID>` matches the format Steam uses (currently a positive base-10 number).
 
-| Filename                   |  Version   |              MD5 Hash              |
-|----------------------------|:----------:|:----------------------------------:|
-| Antlr3.Runtime.dll         | 3.4.1.9004 | `0EEEDE3E43F41ECFA1F374453979FE91` |
-| Antlr3.StringTemplate.dll  | 3.4.1.9004 | `EF7A63F9F7367C732BFF8010C852619D` |
-| PapyrusAssembler.exe       |  1.0.0.1   | `5A373B80D93BB54A5C6014734CD3A0C7` |
-| PapyrusCompiler.exe        |  4.7.0.5   | `9C6585F80030B717A40F2E28DA97378C` |
-| PapyrusCompiler.exe.config |    N/A     | `4D0B084DDB6F9F5290A7835515BBCA2C` |
-| PapyrusProject.xsd         |    N/A     | `9A5F711847EBE06D62854857656C8108` |
-| PCompiler.dll              |  4.7.0.5   | `52BE6ADAD235F137CED4CA588C270395` |
+
+## Versions
+
+### Starfield Creation Kit
+
+|  Version   | Steam Build ID | Release Date |
+|:----------:|:--------------:|:------------:|
+| 1.16.236.0 |    22437927    |  2026-04-07  |
+
+### Starfield
+
+|  Version   | Steam Build ID | Release Date |
+|:----------:|:--------------:|:------------:|
+| 1.16.236.0 |    22444263    |  2026-04-07  |
+
+### Papyrus Compiler
+
+| Filename                   | Size (Bytes) |  Version   |              MD5 Hash              |
+|----------------------------|-------------:|:----------:|:----------------------------------:|
+| Antlr3.Runtime.dll         |      113,504 | 3.4.1.9004 | `9024B0ABD4170F47C5B96DFF786E896B` |
+| Antlr3.StringTemplate.dll  |      253,280 | 3.4.1.9004 | `703A9A26CE001B94EC1D24C5B423D059` |
+| PapyrusAssembler.exe       |    3,536,224 |  1.0.0.1   | `A4B94B1DF21F668E37A74CE1D7E4EC08` |
+| PapyrusCompiler.exe        |       34,144 |  4.7.0.5   | `E810D11384769ED2E1145254E1B92E16` |
+| PapyrusCompiler.exe.config |          144 |    N/A     | `4D0B084DDB6F9F5290A7835515BBCA2C` |
+| PapyrusProject.xsd         |        1,993 |    N/A     | `9A5F711847EBE06D62854857656C8108` |
+| PCompiler.dll              |      747,360 |  4.7.0.5   | `30B5600FA917FC6A84FBD39F72DB9AC1` |
 
 All licenses and copyrights held by the owner(s) of the above software, Bethesda Game Studios.

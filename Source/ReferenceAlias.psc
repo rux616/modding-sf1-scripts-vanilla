@@ -977,3 +977,7 @@ EndEvent
 ; Event this is triggered when a ship is sold
 Event OnShipSold()
 EndEvent
+
+; Event that is triggered when a ship arrives in cruise mode
+Event OnShipCruiseArrival()
+EndEvent

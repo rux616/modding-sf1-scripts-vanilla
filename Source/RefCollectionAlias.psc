@@ -1185,3 +1185,7 @@ EndEvent
 ; Event that is triggered when the player scans a planet with this spaceship
 Event OnShipScan(ObjectReference akSenderRef, Location aPlanet, ObjectReference[] aMarkersArray)
 EndEvent
+
+; Event that is triggered when a ship arrives in cruise mode
+Event OnShipCruiseArrival(ObjectReference akSenderRef)
+EndEvent

@@ -3,8 +3,8 @@ Scriptname Fragments:Scenes:SF_MQ302_215_ElevatorScene01_001349B4 Extends Scene 
 
 ;BEGIN FRAGMENT Fragment_End
 Function Fragment_End()
-;BEGIN AUTOCAST TYPE LC165QuestScript
-LC165QuestScript kmyQuest = GetOwningQuest() as LC165QuestScript
+;BEGIN AUTOCAST TYPE lc165questscript
+lc165questscript kmyQuest = GetOwningQuest() as lc165questscript
 ;END AUTOCAST
 ;BEGIN CODE
 ;Unlock player movement.
@@ -17,8 +17,8 @@ EndFunction
 
 ;BEGIN FRAGMENT Fragment_Phase_01_End
 Function Fragment_Phase_01_End()
-;BEGIN AUTOCAST TYPE LC165QuestScript
-LC165QuestScript kmyQuest = GetOwningQuest() as LC165QuestScript
+;BEGIN AUTOCAST TYPE lc165questscript
+lc165questscript kmyQuest = GetOwningQuest() as lc165questscript
 ;END AUTOCAST
 ;BEGIN CODE
 ;Lock player movement for the elevator scene.
@@ -28,10 +28,10 @@ kMyQuest.SetPlayerControlsEnabled(False)
 EndFunction
 ;END FRAGMENT
 
-;BEGIN FRAGMENT Fragment_Phase_03_End
-Function Fragment_Phase_03_End()
-;BEGIN AUTOCAST TYPE LC165QuestScript
-LC165QuestScript kmyQuest = GetOwningQuest() as LC165QuestScript
+;BEGIN FRAGMENT Fragment_Phase_04_End
+Function Fragment_Phase_04_End()
+;BEGIN AUTOCAST TYPE lc165questscript
+lc165questscript kmyQuest = GetOwningQuest() as lc165questscript
 ;END AUTOCAST
 ;BEGIN CODE
 ;Set up the elevators.
@@ -40,10 +40,10 @@ kMyQuest.SetupElevators()
 EndFunction
 ;END FRAGMENT
 
-;BEGIN FRAGMENT Fragment_Phase_06_End
-Function Fragment_Phase_06_End()
-;BEGIN AUTOCAST TYPE LC165QuestScript
-LC165QuestScript kmyQuest = GetOwningQuest() as LC165QuestScript
+;BEGIN FRAGMENT Fragment_Phase_07_End
+Function Fragment_Phase_07_End()
+;BEGIN AUTOCAST TYPE lc165questscript
+lc165questscript kmyQuest = GetOwningQuest() as lc165questscript
 ;END AUTOCAST
 ;BEGIN CODE
 ;Start the elevator animation.

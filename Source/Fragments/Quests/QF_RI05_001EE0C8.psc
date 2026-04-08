@@ -625,6 +625,8 @@ Alias_Yuko.GetActorRef().EvaluatePackage()
 Alias_ImogeneOfficeDoor.GetRef().SetOpen(False)
 Alias_Frankie.GetActorRef().SetEssential(False)
 
+Alias_KumihoSlate.RefillAlias()
+
 SetObjectiveDisplayed(100) ; Talk to Imogene
 ;END CODE
 EndFunction
@@ -1035,6 +1037,10 @@ SetObjectiveDisplayed(700) ; Find Kumiho's Slate
 
 ; Enable Kumiho
 Alias_Kumiho.GetRef().Enable()
+
+; Refill the slate alias due to the fix foir SF-71043, in case the 
+; player was on this quest when the patch went out.
+Alias_KumihoSlate.RefillAlias()
 Alias_KumihoSlate.GetRef().Enable()
 ;END CODE
 EndFunction

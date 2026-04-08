@@ -35,7 +35,14 @@ EndEvent
 Event Actor.OnLocationChange(Actor akSender, Location akOldLoc, Location akNewLoc)
 	Trace(self, "OnLocationChange() akSender: " + akSender + ", akOldLoc: " + akOldLoc + ", akNewLoc: " + akNewLoc)
 	if akSender == Game.GetPlayer()
-		; We have seen cases where a Bounty Target NPC doesn't get cleaned up when the player leaves the area (check persistence with console command: dppi). 
+		ShutDown()
+	endif
+EndEvent
+
+
+Function Shutdown()
+	Trace(self, "Shutdown() calling Stop()")
+	; We have seen cases where a Bounty Target NPC doesn't get cleaned up when the player leaves the area (check persistence with console command: dppi). 
 		; So, we disable the bounty target reference just in case so it won't continue to show up after the player leaves the location, 
 		; before it gets cleaned up.
 		  ; There will only ever be one RefAlias in ShutdownAliases[]. We had to do it this way because of the issue with duplicate quests, and an 
@@ -45,13 +52,6 @@ Event Actor.OnLocationChange(Actor akSender, Location akOldLoc, Location akNewLo
 		; Clear the SpeechNPC Alias in the SFBGS003_Bounty_SpeechChallenge quest to prevent the bounty target ref from persisting, since code 
 		; adds the speech challenge target from this quest into that Alias.
 		SpeechNPC.Clear()
-		ShutDown()
-	endif
-EndEvent
-
-
-Function Shutdown()
-	Trace(self, "Shutdown() calling Stop()")
 	Stop()
 EndFunction
 

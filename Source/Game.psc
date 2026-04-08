@@ -317,6 +317,11 @@ bool Function IsCamSwitchControlsEnabled() native global
 ; Is ship far travel enabled?
 bool Function IsFarTravelControlsEnabled() native global
 
+; Is ship cruise enabled?
+bool Function IsCruiseModeControlsEnabled() native global
+
+bool Function IsCruiseModeActive() native global
+
 ; Is fast travel controls enabled? Returns false if EnableFastTravel(false) has been called
 bool Function IsFastTravelControlsEnabled() native global
 
@@ -525,6 +530,9 @@ Function ShowRaceMenu( ObjectReference akMenuTarget = None, int uiMode = 0, Obje
 
 ; Shows the Galaxy Star Map menu.
 Function ShowGalaxyStarMapMenu() native global
+
+; Shows the Galaxy Star Map menu.
+Function ShowGalaxyStarMapMenuAndPlotToLocation(Location aLocation) native global
 
 ; Title Sequence menu functions
 Function ShowTitleSequenceMenu() native global

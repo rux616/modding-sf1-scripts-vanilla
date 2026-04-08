@@ -417,6 +417,10 @@ EndEvent
 Event OnShipSold()
 EndEvent
 
+; Event that is triggered when a ship arrives in cruise mode
+Event OnShipCruiseArrival()
+EndEvent
+
 ;scornett
 ;Is the ship's exterior load door inaccessible? (Checks the state of the first door found, if there are multiple.)
 bool Function IsExteriorLoadDoorInaccessible()

@@ -308,7 +308,16 @@ EndFunction
 
 ;BEGIN FRAGMENT Fragment_Stage_2000_Item_00
 Function Fragment_Stage_2000_Item_00()
+;BEGIN AUTOCAST TYPE FC09QuestScript
+Quest __temp = self as Quest
+FC09QuestScript kmyQuest = __temp as FC09QuestScript
+;END AUTOCAST
 ;BEGIN CODE
+; For some reason, the RewardShip Alias doesn't always fill.
+; In case it doesn't this refills the alias before we try to award
+; the Star Eagle.
+kmyQuest.RefillCriticalAliases()
+
 ; Set MQ305 variable for Ron Hope being dead
 MQ305_FSC_RonHopeKilled.SetValue(1)
 

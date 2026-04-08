@@ -63,6 +63,7 @@ Function Fragment_Stage_0200_Item_00()
 ;BEGIN CODE
 ;make sure we remove music
 _MUSExplore_WwiseSilence.Remove()
+(Alias_Player as MQ204StateChangeHandlerPlayerScript).RemoveSilentMusic()
 
 ;chisolm scene should be turned back on
 If FFNewAtlantis01.IsRunning()
@@ -103,3 +104,5 @@ ReferenceAlias Property Alias_TommyBitlow Auto Const Mandatory
 GlobalVariable Property UC04_AttackActive Auto Const Mandatory
 
 Quest Property CF05 Auto Const Mandatory
+
+ReferenceAlias Property Alias_Player Auto Const Mandatory

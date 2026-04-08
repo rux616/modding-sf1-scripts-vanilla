@@ -104,6 +104,9 @@ Function RemoveLinkedLocation(Location akLoc, Keyword akKeyword) native
 ; Forces reset on all encounter zones and interior cells which use this location
 Function Reset() native
 
+; Forces reset on all encounter zones and interior cells which use this location, and forces all actors within to also reset
+Function ForceResetWithActors() native
+
 ; Sets the specified keyword's data on the location
 Function SetKeywordData(Keyword akKeyword, float afData) native
 

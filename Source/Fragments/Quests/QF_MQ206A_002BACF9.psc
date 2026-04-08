@@ -706,19 +706,30 @@ ElseIf DeadCompanionREF == BarrettREF
   AjaREF.MovetoMyEditorLocation()
 EndIf
 
+
+
+
 ;if any committment quests are active, locked in companion must re-follow
 If COM_Quest_Andreja_Commitment.IsRunning() || COM_Quest_Andreja_Q01.IsRunning()
-  (SQ_Companions as SQ_CompanionsScript).SetRoleActive(AndrejaREF)
-  AndrejaREF.EvaluatePackage()
+	If DeadCompanionREF != AndrejaREF
+  		(SQ_Companions as SQ_CompanionsScript).SetRoleActive(AndrejaREF)
+		AndrejaREF.EvaluatePackage()
+	EndIf
 ElseIf COM_Quest_Barrett_Commitment.IsRunning() || COM_Quest_Barrett_Q01.IsRunning() || COM_Quest_Barrett_Q02.IsRunning()
-  (SQ_Companions as SQ_CompanionsScript).SetRoleActive(BarrettREF)
-  BarrettREF.EvaluatePackage()
+	If DeadCompanionREF != BarrettREF
+		(SQ_Companions as SQ_CompanionsScript).SetRoleActive(BarrettREF)
+		BarrettREF.EvaluatePackage()
+	EndIf
 ElseIf COM_Quest_SamCoe_Commitment.IsRunning() || COM_Quest_SamCoe_Q01.IsRunning()
-  (SQ_Companions as SQ_CompanionsScript).SetRoleActive(SamCoeREF)
-  SamCoeREF.EvaluatePackage()
+	If DeadCompanionREF != SamCoeREF
+		(SQ_Companions as SQ_CompanionsScript).SetRoleActive(SamCoeREF)
+		SamCoeREF.EvaluatePackage()
+	EndIf
 ElseIf COM_Quest_SarahMorgan_Commitment.IsRunning() || COM_Quest_SarahMorgan_Q01.IsRunning()
-  (SQ_Companions as SQ_CompanionsScript).SetRoleActive(SarahMorganREF)
-  SarahMorganREF.EvaluatePackage()
+	If DeadCompanionREF != SarahMorganREF
+		(SQ_Companions as SQ_CompanionsScript).SetRoleActive(SarahMorganREF)
+		SarahMorganREF.EvaluatePackage()
+	EndIf
 EndIf
 
 Alias_LodgeBed.GetRef().BlockActivation(false, false)

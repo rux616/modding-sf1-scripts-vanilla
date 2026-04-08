@@ -8,11 +8,30 @@ Function Fragment_Stage_0000_Item_00()
 SFBGS003_DialogueTAHQ.UpdateCurrentInstanceGlobal(SFBGS003_Bounties_Total)
 
 ; Stops any currently running Bounty Scanner quests to prevent issues
-SFBGS003_BountyScannerQuest.Stop()
-SFBGS003_BountyScannerQuest00.Stop()
-SFBGS003_BountyScannerQuest01.Stop()
-SFBGS003_BountyScannerQuest02.Stop()
-SFBGS003_BountyScannerQuest03.Stop()
+SFBGS003:SFBGS003_ShutdownQuestScript shutdownScript = SFBGS003_BountyScannerQuest as SFBGS003:SFBGS003_ShutdownQuestScript
+if shutdownScript
+    shutdownScript.Shutdown()
+endif
+
+SFBGS003:SFBGS003_ShutdownQuestScript shutdownScript00 = SFBGS003_BountyScannerQuest00 as SFBGS003:SFBGS003_ShutdownQuestScript
+if shutdownScript00
+    shutdownScript00.Shutdown()
+endif
+
+SFBGS003:SFBGS003_ShutdownQuestScript shutdownScript01 = SFBGS003_BountyScannerQuest01 as SFBGS003:SFBGS003_ShutdownQuestScript
+if shutdownScript01
+    shutdownScript01.Shutdown()
+endif
+
+SFBGS003:SFBGS003_ShutdownQuestScript shutdownScript02 = SFBGS003_BountyScannerQuest02 as SFBGS003:SFBGS003_ShutdownQuestScript
+if shutdownScript02
+    shutdownScript02.Shutdown()
+endif
+
+SFBGS003:SFBGS003_ShutdownQuestScript shutdownScript03 = SFBGS003_BountyScannerQuest03 as SFBGS003:SFBGS003_ShutdownQuestScript
+if shutdownScript03
+    shutdownScript03.Shutdown()
+endif
 ;END CODE
 EndFunction
 ;END FRAGMENT

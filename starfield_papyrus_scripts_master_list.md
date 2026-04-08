@@ -1,9 +1,9 @@
-# Starfield Papyrus Scripts Master List
+# Starfield Papyrus Native Scripts Master List
 
-Starfield v1.15.216.0
+Starfield v1.16.236.0
 
 ## Table Of Contents
-- [Starfield Papyrus Scripts Master List](#starfield-papyrus-scripts-master-list)
+- [Starfield Papyrus Native Scripts Master List](#starfield-papyrus-native-scripts-master-list)
     - [Table Of Contents](#table-of-contents)
 - [Inheritance](#inheritance)
 - [Details](#details)
@@ -131,6 +131,8 @@ Starfield v1.15.216.0
         - [Function: IsVATSPlaybackActive (Native) (Global)](#function-isvatsplaybackactive-native-global)
         - [Function: IsCamSwitchControlsEnabled (Native) (Global)](#function-iscamswitchcontrolsenabled-native-global)
         - [Function: IsFarTravelControlsEnabled (Native) (Global)](#function-isfartravelcontrolsenabled-native-global)
+        - [Function: IsCruiseModeControlsEnabled (Native) (Global)](#function-iscruisemodecontrolsenabled-native-global)
+        - [Function: IsCruiseModeActive (Native) (Global)](#function-iscruisemodeactive-native-global)
         - [Function: IsFastTravelControlsEnabled (Native) (Global)](#function-isfasttravelcontrolsenabled-native-global)
         - [Function: IsFastTravelEnabled (Native) (Global)](#function-isfasttravelenabled-native-global)
         - [Function: IsFavoritesControlsEnabled (Native) (Global)](#function-isfavoritescontrolsenabled-native-global)
@@ -198,6 +200,7 @@ Starfield v1.15.216.0
         - [Function: ShowMissionBoardMenu (Native) (Global)](#function-showmissionboardmenu-native-global)
         - [Function: ShowRaceMenu (Native) (Global)](#function-showracemenu-native-global)
         - [Function: ShowGalaxyStarMapMenu (Native) (Global)](#function-showgalaxystarmapmenu-native-global)
+        - [Function: ShowGalaxyStarMapMenuAndPlotToLocation (Native) (Global)](#function-showgalaxystarmapmenuandplottolocation-native-global)
         - [Function: ShowTitleSequenceMenu (Native) (Global)](#function-showtitlesequencemenu-native-global)
         - [Function: HideTitleSequenceMenu (Native) (Global)](#function-hidetitlesequencemenu-native-global)
         - [Function: StartTitleSequence (Native) (Global)](#function-starttitlesequence-native-global)
@@ -487,6 +490,7 @@ Starfield v1.15.216.0
             - [Event: OnShipSystemRepaired](#event-onshipsystemrepaired)
             - [Event: OnShipTakeOff](#event-onshiptakeoff)
             - [Event: OnShipUndock](#event-onshipundock)
+            - [Event: OnShipCruiseArrival](#event-onshipcruisearrival)
             - [Function: Dispel (Native)](#function-dispel-native)
             - [Function: GetBaseObject (Native)](#function-getbaseobject-native)
             - [Function: GetCasterActor (Native)](#function-getcasteractor-native)
@@ -656,6 +660,7 @@ Starfield v1.15.216.0
                 - [Event: OnShipRampDown](#event-onshiprampdown-1)
                 - [Event: OnShipRefueled](#event-onshiprefueled-1)
                 - [Event: OnShipScan](#event-onshipscan-1)
+                - [Event: OnShipCruiseArrival](#event-onshipcruisearrival-1)
                 - [Function: AddToFaction](#function-addtofaction)
                 - [Function: BlockActivation](#function-blockactivation)
                 - [Function: GetActorAt](#function-getactorat)
@@ -843,6 +848,7 @@ Starfield v1.15.216.0
                 - [Event: OnShipRefueled](#event-onshiprefueled-2)
                 - [Event: OnShipBought](#event-onshipbought-2)
                 - [Event: OnShipSold](#event-onshipsold-2)
+                - [Event: OnShipCruiseArrival](#event-onshipcruisearrival-2)
                 - [Function: ApplyToRef (Native)](#function-applytoref-native)
                 - [Function: Clear (Native)](#function-clear-native-1)
                 - [Function: GetReference (Native)](#function-getreference-native)
@@ -1075,6 +1081,7 @@ Starfield v1.15.216.0
                 - [Function: RemoveKeyword (Native)](#function-removekeyword-native)
                 - [Function: RemoveLinkedLocation (Native)](#function-removelinkedlocation-native)
                 - [Function: Reset (Native)](#function-reset-native-2)
+                - [Function: ForceResetWithActors (Native)](#function-forceresetwithactors-native)
                 - [Function: SetKeywordData (Native)](#function-setkeyworddata-native)
                 - [Function: SetExplored (Native)](#function-setexplored-native)
                 - [Function: SetFactionOwner (Native)](#function-setfactionowner-native-1)
@@ -1394,6 +1401,7 @@ Starfield v1.15.216.0
                 - [Function: IsInDialogueWithPlayer (Native)](#function-isindialoguewithplayer-native)
                 - [Function: IsInTrigger (Native)](#function-isintrigger-native)
                 - [Function: IsInSpace (Native)](#function-isinspace-native)
+                - [Function: IsInSpaceEx (Native)](#function-isinspaceex-native)
                 - [Function: IsLockBroken (Native)](#function-islockbroken-native)
                 - [Function: IsLocked (Native)](#function-islocked-native)
                 - [Function: IsMapMarkerVisible (Native)](#function-ismapmarkervisible-native)
@@ -1508,6 +1516,7 @@ Starfield v1.15.216.0
                 - [Function: SetValue (Native)](#function-setvalue-native-2)
                 - [Function: IncrementLoopingValue](#function-incrementloopingvalue)
                 - [Function: ShowHangarMenu (Native)](#function-showhangarmenu-native)
+                - [Function: ShowCraftingMenu (Native)](#function-showcraftingmenu-native)
                 - [Function: ShowWorkshopBuilderMenu (Native)](#function-showworkshopbuildermenu-native)
                 - [Function: ShowWorkshopTargetMenu (Native)](#function-showworkshoptargetmenu-native)
                 - [Function: SplineTranslateTo (Native)](#function-splinetranslateto-native)
@@ -1860,6 +1869,7 @@ Starfield v1.15.216.0
                     - [Event: OnShipUndock](#event-onshipundock-3)
                     - [Event: OnShipBought](#event-onshipbought-3)
                     - [Event: OnShipSold](#event-onshipsold-3)
+                    - [Event: OnShipCruiseArrival](#event-onshipcruisearrival-3)
                     - [Function: AddPerk (Native)](#function-addperk-native-1)
                     - [Function: AddToFaction](#function-addtofaction-2)
                     - [Function: CanLandAtMarker (Native)](#function-canlandatmarker-native)
@@ -2005,6 +2015,7 @@ Starfield v1.15.216.0
                 - [Event: OnStoryBribeNPC](#event-onstorybribenpc)
                 - [Event: OnStoryCastMagic](#event-onstorycastmagic)
                 - [Event: OnStoryChangeLocation](#event-onstorychangelocation)
+                - [Event: OnStoryChangeLocationEx](#event-onstorychangelocationex)
                 - [Event: OnStoryExploredLocation](#event-onstoryexploredlocation)
                 - [Event: OnStoryCraftItem](#event-onstorycraftitem)
                 - [Event: OnStoryCrimeGold](#event-onstorycrimegold)
@@ -2188,6 +2199,7 @@ Starfield v1.15.216.0
             - [Function: EnableVATS (Native)](#function-enablevats-native)
             - [Function: EnableCamSwitch (Native)](#function-enablecamswitch-native)
             - [Function: EnableFarTravel (Native)](#function-enablefartravel-native)
+            - [Function: EnableCruiseMode (Native)](#function-enablecruisemode-native)
             - [Function: EnableFastTravel (Native)](#function-enablefasttravel-native-2)
             - [Function: EnableFavorites (Native)](#function-enablefavorites-native)
             - [Function: EnableGravJump (Native)](#function-enablegravjump-native)
@@ -2201,6 +2213,7 @@ Starfield v1.15.216.0
             - [Function: EnableMovement (Native)](#function-enablemovement-native)
             - [Function: EnableRunning (Native)](#function-enablerunning-native)
             - [Function: EnableSprinting (Native)](#function-enablesprinting-native)
+            - [Function: SetCruiseModeRequiresFarTravel (Native)](#function-setcruisemoderequiresfartravel-native)
             - [Function: EnableZKey (Native)](#function-enablezkey-native)
             - [Function: EnableHandscanner (Native)](#function-enablehandscanner-native)
             - [Function: EnablePlayerControls (Native)](#function-enableplayercontrols-native)
@@ -2210,6 +2223,7 @@ Starfield v1.15.216.0
             - [Function: IsVATSEnabled (Native)](#function-isvatsenabled-native)
             - [Function: IsCamSwitchEnabled (Native)](#function-iscamswitchenabled-native)
             - [Function: IsFarTravelEnabled (Native)](#function-isfartravelenabled-native)
+            - [Function: IsCruiseModeEnabled (Native)](#function-iscruisemodeenabled-native)
             - [Function: IsFastTravelEnabled (Native)](#function-isfasttravelenabled-native)
             - [Function: IsFavoritesEnabled (Native)](#function-isfavoritesenabled-native)
             - [Function: IsGravJumpEnabled (Native)](#function-isgravjumpenabled-native)
@@ -2223,6 +2237,7 @@ Starfield v1.15.216.0
             - [Function: IsMovementEnabled (Native)](#function-ismovementenabled-native)
             - [Function: IsRunningEnabled (Native)](#function-isrunningenabled-native)
             - [Function: IsSprintingEnabled (Native)](#function-issprintingenabled-native)
+            - [Function: CruiseModeRequiresFarTravel (Native)](#function-cruisemoderequiresfartravel-native)
             - [Function: IsZKeyEnabled (Native)](#function-iszkeyenabled-native)
             - [Function: IsHandscannerEnabled (Native)](#function-ishandscannerenabled-native)
             - [Function: IsSneakingEnabled (Native)](#function-issneakingenabled-native)
@@ -3313,6 +3328,18 @@ Is ship far travel enabled?
 
 ([TOC](#table-of-contents))
 
+### Function: IsCruiseModeControlsEnabled (Native) (Global)
+`bool Function IsCruiseModeControlsEnabled() native global`
+
+Is ship cruise enabled?
+
+([TOC](#table-of-contents))
+
+### Function: IsCruiseModeActive (Native) (Global)
+`bool Function IsCruiseModeActive() native global`
+
+([TOC](#table-of-contents))
+
 ### Function: IsFastTravelControlsEnabled (Native) (Global)
 `bool Function IsFastTravelControlsEnabled() native global`
 
@@ -3789,6 +3816,13 @@ Displays the race/sex menu
 
 ### Function: ShowGalaxyStarMapMenu (Native) (Global)
 `Function ShowGalaxyStarMapMenu() native global`
+
+Shows the Galaxy Star Map menu.
+
+([TOC](#table-of-contents))
+
+### Function: ShowGalaxyStarMapMenuAndPlotToLocation (Native) (Global)
+`Function ShowGalaxyStarMapMenuAndPlotToLocation(Location aLocation) native global`
 
 Shows the Galaxy Star Map menu.
 
@@ -6617,6 +6651,15 @@ Event from ship
 
 ([TOC](#table-of-contents))
 
+#### Event: OnShipCruiseArrival
+`Event OnShipCruiseArrival()`
+
+Event that is triggered when a ship arrives in cruise mode
+
+Event from ship
+
+([TOC](#table-of-contents))
+
 #### Function: Dispel (Native)
 `Function Dispel() native`
 
@@ -8452,6 +8495,17 @@ Received if the object the alias points at receives the events. The sender of ea
 Event from spaceship
 
 Event that is triggered when the player scans a planet with this spaceship
+
+([TOC](#table-of-contents))
+
+##### Event: OnShipCruiseArrival
+`Event OnShipCruiseArrival(ObjectReference akSenderRef)`
+
+Received if the object the alias points at receives the events. The sender of each event is the specific ref or actor in the collection that fired the event
+
+Event from spaceship
+
+Event that is triggered when a ship arrives in cruise mode
 
 ([TOC](#table-of-contents))
 
@@ -10430,6 +10484,17 @@ Event this is triggered when a ship is sold
 
 ([TOC](#table-of-contents))
 
+##### Event: OnShipCruiseArrival
+`Event OnShipCruiseArrival()`
+
+Event is received if the object the alias points at receives the event
+
+Event from spaceship
+
+Event that is triggered when a ship arrives in cruise mode
+
+([TOC](#table-of-contents))
+
 ##### Function: ApplyToRef (Native)
 `Function ApplyToRef(ObjectReference akRef) native`
 
@@ -11998,6 +12063,13 @@ Removes any link between this location and the given one under the given keyword
 `Function Reset() native`
 
 Forces reset on all encounter zones and interior cells which use this location
+
+([TOC](#table-of-contents))
+
+##### Function: ForceResetWithActors (Native)
+`Function ForceResetWithActors() native`
+
+Forces reset on all encounter zones and interior cells which use this location, and forces all actors within to also reset
 
 ([TOC](#table-of-contents))
 
@@ -14301,6 +14373,13 @@ Is this reference in space?
 
 ([TOC](#table-of-contents))
 
+##### Function: IsInSpaceEx (Native)
+`bool Function IsInSpaceEx(bool aIncludeShipDungeons = false) native`
+
+Is this reference in space, optionally including ship dungeons?
+
+([TOC](#table-of-contents))
+
 ##### Function: IsLockBroken (Native)
 `bool Function IsLockBroken() native`
 
@@ -15126,6 +15205,13 @@ sets and returns (GetValueInt(akAV) + aiIncrementAmount) % (aiMaxValue + 1)
 `Function ShowHangarMenu(int aiMode = 0, Actor akVendor = None, SpaceshipReference akMenuTarget = None, bool abOpenToAvailableTab = false) native`
 
 Opens the Hangar Menu for the current reference. Mode 0 = credits (vending), Mode 1 = resources (crafting)
+
+([TOC](#table-of-contents))
+
+##### Function: ShowCraftingMenu (Native)
+`Function ShowCraftingMenu() native`
+
+Opens the Crafting menu
 
 ([TOC](#table-of-contents))
 
@@ -17903,6 +17989,13 @@ Event this is triggered when a ship is sold
 
 ([TOC](#table-of-contents))
 
+###### Event: OnShipCruiseArrival
+`Event OnShipCruiseArrival()`
+
+Event that is triggered when a ship arrives in cruise mode
+
+([TOC](#table-of-contents))
+
 ###### Function: AddPerk (Native)
 `Function AddPerk(Perk akPerk, bool abNotify=false) native`
 
@@ -18958,6 +19051,13 @@ Story manager event - fired in parallel with the quest startup stage
 
 ##### Event: OnStoryChangeLocation
 `Event OnStoryChangeLocation(ObjectReference akActor, Location akOldLocation, Location akNewLocation)`
+
+Story manager event - fired in parallel with the quest startup stage
+
+([TOC](#table-of-contents))
+
+##### Event: OnStoryChangeLocationEx
+`Event OnStoryChangeLocationEx(ObjectReference akActor, Location akOldLocation, Location akNewLocation, bool abIsSpaceCruiseEvent)`
 
 Story manager event - fired in parallel with the quest startup stage
 
@@ -20247,6 +20347,13 @@ Enables/disables the player's ability to far travel in a spaceship
 
 ([TOC](#table-of-contents))
 
+#### Function: EnableCruiseMode (Native)
+`Function EnableCruiseMode(bool abEnable = true) Native`
+
+Enables/disables the player's ability to cruise in a spaceship
+
+([TOC](#table-of-contents))
+
 #### Function: EnableFastTravel (Native)
 `Function EnableFastTravel(bool abEnable = true) Native`
 
@@ -20328,11 +20435,20 @@ Enables/disables the player's ability to move
 `Function EnableRunning(bool abEnable = true) Native`
 
 Enables/disables the player's ability to run
-  
+
+([TOC](#table-of-contents))
+
 #### Function: EnableSprinting (Native)
 `Function EnableSprinting(bool abEnable = true) Native`
 
 Enables/disables the player's ability to sprint
+
+([TOC](#table-of-contents))
+
+#### Function: SetCruiseModeRequiresFarTravel (Native)
+`Function SetCruiseModeRequiresFarTravel(bool abEnable = true) Native`
+
+Enables/disables cruise mode dependency on far travel
 
 ([TOC](#table-of-contents))
 
@@ -20396,6 +20512,13 @@ Returns whether camera switch is enabled on this layer
 `bool Function IsFarTravelEnabled() Native`
 
 Returns whether far travel is enabled on this layer
+
+([TOC](#table-of-contents))
+
+#### Function: IsCruiseModeEnabled (Native)
+`bool Function IsCruiseModeEnabled() Native`
+
+Returns whether cruise mode is enabled on this layer
 
 ([TOC](#table-of-contents))
 
@@ -20487,6 +20610,13 @@ Returns whether running is enabled on this layer
 `bool Function IsSprintingEnabled() Native`
 
 Returns whether sprinting is enabled on this layer
+
+([TOC](#table-of-contents))
+
+#### Function: CruiseModeRequiresFarTravel (Native)
+`bool Function CruiseModeRequiresFarTravel() Native`
+
+Returns whether cruise mode is dependent on far travel on this layer
 
 ([TOC](#table-of-contents))
 

@@ -272,6 +272,11 @@ function ScanForContraband()
 				; transition out of contraband warning
 				HideContrabandScanWarning(abSkipCompletionAnim = false, abWasDetectionEvaded = false)
 				SendSmugglingAlarm()
+				
+				if Game.IsCruiseModeActive()
+					debug.trace(self + " Trying to Arrest Player if they were caught during a Scan while Cruising away.")
+					Ship01.TryToSetPlayerResistingArrest()
+				endif
 			Else
 				debug.trace(self + " shielded contraband - smuggling minigame")
 				bool scanStatus = SQ_Parent.SmugglingMinigame(playerShipRef, Ship01.GetShipRef())
@@ -482,8 +487,8 @@ function CheckForShutdown(bool allowRestartContrabandScene = true)
 				EndIf
 			endif
 
-			if moonCheck || currentLocation.IsSameLocation(guardShipLocation, LocTypeMajorOrbital) == false
-				debug.trace(self + " Player or player ship no longer at same planet - allow landing and shut down")
+			if moonCheck || currentLocation.IsSameLocation(guardShipLocation, LocTypeMajorOrbital) == false || Game.IsCruiseModeActive()
+				debug.trace(self + " Player or player ship no longer at same planet, OR player is in Cruise Mode - allow landing and shut down")
 				AllowLanding(true)
 				Stop()
 			Elseif playerShipRef.IsInSpace() && SQ_GuardShipsScanStatus.GetValueInt() < 1 && SQ_GuardShipsScene.IsPlaying() == false

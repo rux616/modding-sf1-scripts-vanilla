@@ -167,8 +167,10 @@ Function _CustomSetRoleInactive(Actor ActorToUpdate)
 	float aggression = ActorToUpdate.GetValue(Cached_PreFollowerAggression)
 	Trace(self, "_CustomSetRoleActive() restoring aggression to: " + aggression)
 	
-	;restore their aggression
-	ActorToUpdate.SetValue(aggressionAV, aggression)
+	;restore their aggression if value has been cached previously by being a value greater than -1
+	if aggression >= 0
+		ActorToUpdate.SetValue(aggressionAV, aggression)
+	endif
 EndFunction
 
 Function SetGroupFormationFactionData(Actor ActorToSet)

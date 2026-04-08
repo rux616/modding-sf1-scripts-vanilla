@@ -754,6 +754,9 @@ bool Function IsInTrigger(ObjectReference refToCheck) native
 ; Is this reference in space?
 bool Function IsInSpace() native
 
+; Is this reference in space, optionally including ship dungeons?
+bool Function IsInSpaceEx(bool aIncludeShipDungeons = false) native
+
 ; Is the lock on this object broken?
 bool Function IsLockBroken() native
 
@@ -1131,6 +1134,9 @@ EndFunction
 
 ; Opens the Hangar Menu for the current reference. Mode 0 = credits (vending), Mode 1 = resources (crafting)
 Function ShowHangarMenu(int aiMode = 0, Actor akVendor = None, SpaceshipReference akMenuTarget = None, bool abOpenToAvailableTab = false) native
+
+; Opens the Crafting menu
+Function ShowCraftingMenu() native
 
 ; Opens the Workshop Builder Menu for the current reference
 Function ShowWorkshopBuilderMenu() native

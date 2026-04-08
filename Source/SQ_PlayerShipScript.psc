@@ -825,6 +825,10 @@ Event Actor.OnHomeShipSet(Actor akSource, SpaceshipReference akShip, SpaceshipRe
 					debug.trace(self + " player not on previous home ship - set new home ship as the player ship")
 					ResetPlayerShip(akShip)
 				endif
+				; if old home ship isn't docked, disable it
+				if(!akPrevious.IsDocked())
+					akPrevious.Disable()
+				EndIf
 				; give message for new home ship if previous ship isn't disabled or in space(meaning already on home landing pad)
 				debug.trace(self + " akPrevious.IsDisabled() == " + akPrevious.IsDisabled())
 				if akPrevious.IsDisabled() == false

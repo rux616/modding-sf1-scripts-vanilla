@@ -15,19 +15,23 @@ Keyword Property LocEncSyndicate Mandatory Const Auto
 LocationAlias Property Base Mandatory Const Auto
 ReferenceAlias Property BossContainer Mandatory Const Auto
 ReferenceAlias Property Denis Mandatory Const Auto
+ReferenceAlias Property DenisContainer Mandatory Const Auto
 ReferenceAlias Property Item Mandatory Const Auto
+RefCollectionAlias Property Items Mandatory Const Auto
 
 Form myItem
 
 
-;Check to see if the player has enough of the requested items. If so, set a value for dialogue purposes, and remove the items
+
+; Check to see if the player has enough of the requested items. If so, set a value for dialogue purposes, 
+; and remove the items from the container
 Function CheckItems()
     If myItem != None
-        Actor myPlayer = Game.GetPlayer()
+        ObjectReference myContainer = DenisContainer.GetRef()
         Int iCount = FFCydoniaR02_EquipmentNeededCount.GetValue() as Int
-        If myPlayer.GetItemCount(myItem) >= iCount
+        If myContainer.GetItemCount(myItem) >= iCount
             FFCydoniaR02_ItemsAcquired.SetValue(1)
-            myPlayer.RemoveItem(myItem, iCount, False, Denis.GetRef())
+            DenisContainer.GetRef().RemoveItem(myItem, iCount, False, Denis.GetRef())
         EndIf
     EndIf
 EndFunction
@@ -65,11 +69,12 @@ Event OnQuestInit()
 
         ;Adds the number of items needed to the boss container, minus 1. Then adds one more while putting it into an Alias, for text replacement purposes.
         If myItem != None
+            Int iItemsMinusOne = (iItemsNeeded - 1)
             ObjectReference myBossContainer = BossContainer.GetRef()
-            myBossContainer.AddItem(myItem, (iItemsNeeded - 1))
+            myBossContainer.AddAliasedItem(myItem, Items, iItemsMinusOne)
             myBossContainer.AddAliasedItem(myItem, Item, 1)
+            (DenisContainer as ffCydoniaR02_DenisContainerScript).SetupData(myItem)
         EndIf
-
     EndIf
 
     

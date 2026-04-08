@@ -333,6 +333,10 @@ Event OnStoryChangeLocation(ObjectReference akActor, Location akOldLocation, \
 	Location akNewLocation)
 EndEvent
 
+Event OnStoryChangeLocationEx(ObjectReference akActor, Location akOldLocation, \
+	Location akNewLocation, bool abIsSpaceCruiseEvent)
+EndEvent
+
 Event OnStoryExploredLocation(Location akOldLocation)
 EndEvent
 
