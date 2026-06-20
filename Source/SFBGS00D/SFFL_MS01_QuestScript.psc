@@ -1,0 +1,3 @@
+Scriptname SFBGS00D:SFFL_MS01_QuestScript extends Quest
+
+InputEnableLayer Property SFFL_MS01_Layer Auto
